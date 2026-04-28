@@ -1,292 +1,109 @@
-// ============================================================
 // src/config/client.ts
-// PREENCHA ESTE ARQUIVO AO INICIAR UM NOVO PROJETO
-//
-// Todos os textos, dados e configurações do cliente ficam aqui.
-// Os componentes lêem deste arquivo — não edite os componentes
-// a não ser que seja necessária uma mudança estrutural.
-// ============================================================
-
 export const CLIENT = {
-  // ----------------------------------------------------------
-  // IDENTIDADE
-  // ----------------------------------------------------------
-  name: 'NOME DA CLÍNICA',
-  logo: '/images/logo.svg',
-  favicon: '/images/favicon.png',
-
-  // ----------------------------------------------------------
-  // SEO
-  // siteUrl: domínio final do site sem barra no final
-  // og.image: imagem de compartilhamento — idealmente 1200×630 px
-  // schema: dados estruturados para rich results no Google
-  // ----------------------------------------------------------
-  siteUrl: 'https://DOMINIO-DO-SITE.com.br',
-
+  name: "ALEXANDRA REZENDE - PROPLÁSTICA",
+  logo: "https://f58ee20228d9ca2cf6ae548dbcf2204b.r2.cloudflarestorage.com/creative-post-storage/projects/prj_293396a0-b2d8-4c69-8a80-b925666cb804/assets/1777383995587-logo_white.png?X-Amz-Expires=3600&X-Amz-Date=20260428T134914Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=b934f0556c87eb9d9e2b56da7aeeed98%2F20260428%2Fauto%2Fs3%2Faws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=75c7bf8b1e2c97511c53c5026235fe50af631825226d39e5e5ad218d3e9ef90a",
+  favicon: "/images/favicon.png",
+  siteUrl: "https://lp-alexandra-rezende-proplastica.pages.dev",
   seo: {
-    title: 'TÍTULO DA PÁGINA — NOME DA CLÍNICA',
-    description: 'DESCRIÇÃO CURTA DA PÁGINA (até 160 caracteres).',
+    title: "ALEXANDRA REZENDE - Transplante Capilar Belo Horizonte",
+    description: "Recupere sua autoestima com transplante capilar fio a fio na ProPlástica em Belo Horizonte, MG. Resultados naturais e duradouros com a Dra. Alexandra Rezende e Dr. Alexandre Marcondes.",
   },
-
-  og: {
-    image: '/images/og.jpg', // 1200×630 px
-  },
-
+  og: { image: "/images/og.jpg" },
   schema: {
-    type: 'Physician',
-    streetAddress: 'RUA, NÚMERO — BAIRRO',
-    addressLocality: 'CIDADE',
-    addressRegion: 'UF',
-    postalCode: '00000-000',
+    type: "Physician",
+    streetAddress: "",
+    addressLocality: "Belo Horizonte",
+    addressRegion: "MG",
+    postalCode: "",
     sameAs: [] as string[],
   },
-
-  // ----------------------------------------------------------
-  // FONTES (Google Fonts URL — ajustar por cliente)
-  // Padrão: Cormorant Garamond (display) + Montserrat (corpo)
-  // fontsUrl: URL completa do Google Fonts
-  // fonts.display: nome exato da família de títulos
-  // fonts.body: nome exato da família de corpo de texto
-  // ----------------------------------------------------------
-  fontsUrl:
-    'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@400;500;600;700&display=swap',
+  fontsUrl: "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap",
   fonts: {
-    display: 'Cormorant Garamond',
-    body: 'Montserrat',
+    display: "Inter",
+    body: "Inter",
   },
-
-  // ----------------------------------------------------------
-  // INTEGRAÇÕES
-  // ----------------------------------------------------------
-  gtmId: 'GTM-XXXXXXX',
-  webhookUrl: 'https://webhooks02.manager01.growdoc.com.br/webhook/redirect-global',
-  captureUrl: 'https://lswmkiyqznvuedbuyrkt.supabase.co/functions/v1/capture-lead',
-
-  // ----------------------------------------------------------
-  // LOCALIZAÇÃO
-  // ----------------------------------------------------------
-  location: 'CIDADE · UF',
-
-  // ----------------------------------------------------------
-  // HERO
-  // bg-hero.png       → imagem desktop (em public/images/)
-  // bg-hero-mobile.webp → imagem mobile (em public/images/)
-  // ----------------------------------------------------------
+  gtmId: "GTM-XXXXXXX",
+  webhookUrl: "https://webhooks02.manager01.growdoc.com.br/webhook/redirect-global",
+  captureUrl: "https://lswmkiyqznvuedbuyrkt.supabase.co/functions/v1/capture-lead",
+  location: "Belo Horizonte · MG",
   hero: {
-    eyebrow: 'ESPECIALIDADE · CIDADE, UF',
-    // headingLines: cada item vira uma linha do H1. A última entra em itálico dourado.
-    // Não há número mínimo/máximo — use quantas linhas a copy pedir.
-    headingLines: ['LINHA 1', 'LINHA 2', 'palavra em itálico'],
-    credentials: [
-      'Dr. NOME SOBRENOME · CRM XXXXX-XXX | RQE XXXXX',
-    ],
-    formTitle: 'Agende sua consulta',
-    ctaText: 'Ir para o WhatsApp!',
-    // photo: usado pelo HeroSplit — foto do médico sem fundo (recortada ou estúdio)
-    // photo: '/images/dr-nome-hero.webp',
+    eyebrow: "Transplante Capilar · Belo Horizonte, MG",
+    headingLines: ["Recupere sua autoestima com transplante capilar","fio a fio na ProPlástica"],
+    credentials: ["Dra. Alexandra Rezende e Dr. Alexandre Marcondes"],
+    formTitle: "Agende sua Consulta",
+    ctaText: "Agendar consulta",
   },
-
-  // ----------------------------------------------------------
-  // SEÇÃO "DESEJOS"
-  // ----------------------------------------------------------
   desires: {
-    eyebrow: 'Você se identifica?',
-    heading: 'Se você deseja…',
-    items: [
-      { num: '01', text: 'Descrição do desejo 1.' },
-      { num: '02', text: 'Descrição do desejo 2.' },
-      { num: '03', text: 'Descrição do desejo 3.' },
-    ],
-    ctaSubtext: 'O atendimento de [NOME DO MÉDICO] foi feito para você!',
+    eyebrow: "Você se identifica com esses sinais?",
+    heading: "Sua calvície está avançando?",
+    items: [{"num":"01","text":"As entradas estão cada vez mais fundas e difíceis de disfarçar."},{"num":"02","text":"O topo da cabeça (coroa) já aparece sob a luz forte ou fotos."},{"num":"03","text":"Você evita certos cortes de cabelo ou usa boné para esconder a falha."},{"num":"04","text":"Tratamentos paliativos e loções já não fazem mais efeito."}],
+    ctaSubtext: "Não espere o último fio cair. Entenda se você ainda possui área doadora para reverter a calvície com resultados naturais e sem cicatrizes lineares.",
   },
-
-  // ----------------------------------------------------------
-  // SERVIÇOS / PROCEDIMENTOS
-  // ----------------------------------------------------------
   services: {
-    eyebrow: 'Procedimentos',
-    heading: 'HEADLINE DA SEÇÃO DE SERVIÇOS',
-    headingEm: 'palavra em itálico',
-    items: [
-      { num: '01', title: 'SERVIÇO 1', description: 'Descrição do serviço 1.' },
-      { num: '02', title: 'SERVIÇO 2', description: 'Descrição do serviço 2.' },
-      { num: '03', title: 'SERVIÇO 3', description: 'Descrição do serviço 3.' },
-      { num: '04', title: 'SERVIÇO 4', description: 'Descrição do serviço 4.' },
-      { num: '05', title: 'SERVIÇO 5', description: 'Descrição do serviço 5.' },
-      { num: '06', title: 'SERVIÇO 6', description: 'Descrição do serviço 6.' },
-    ],
+    eyebrow: "Como Funciona o Transplante Capilar FUE?",
+    heading: "No Hospital Dia, você tem acesso a um transplante capilar ",
+    headingEm: "seguro,",
+    items: [{"num":"01","title":"TÉCNICA F.U.E","description":"Sem cortes, sem cicatriz linear e com resultados naturais e permanentes."},{"num":"02","title":"ALTA PERFORMANCE","description":"Procedimento minimamente invasivo, feito fio a fio, para resultados naturais e recuperação rápida."},{"num":"03","title":"IMPLANTE FIOS PRÓPRIOS","description":"Seus próprios fios são implantados onde a calvície venceu, respeitando angulação e densidade natural."},{"num":"04","title":"ANESTESIA LOCAL E SEDAÇÃO","description":"Realizado com anestesia local e sedação intravenosa para seu conforto e bem-estar durante o procedimento."}],
   },
-
-  // ----------------------------------------------------------
-  // DEPOIMENTOS
-  // ----------------------------------------------------------
-  testimonials: [
-    { title: '"Depoimento!"', body: '"Texto do depoimento."', author: 'Nome do Paciente' },
-    { title: '"Outro!"', body: '"Texto do depoimento."', author: 'Nome do Paciente' },
-    { title: '"Mais um!"', body: '"Texto do depoimento."', author: 'Nome do Paciente' },
-    { title: '"E mais!"', body: '"Texto do depoimento."', author: 'Nome do Paciente' },
-    { title: '"Último!"', body: '"Texto do depoimento."', author: 'Nome do Paciente' },
-  ],
-
-  // ----------------------------------------------------------
-  // COMO FUNCIONA / PROCESSO
-  // Componente: ProcessSection — timeline numerada vertical
-  // ----------------------------------------------------------
+  testimonials: [{"title":"“MINHA EXPERIÊNCIA FOI ÓTIMA!”","body":"Fiz minha cirurgia e correu tudo muito bem! Atendimento atencioso, equipe cuidadosa e um ambiente que transmite segurança. Espero voltar em breve para mais um procedimento. Obrigada Dr. Leonardo e equipe ProPlástica!","author":"Patrícia Melo"},{"title":"“ATENDIMENTO QUE SUPERA EXPECTATIVAS!”","body":"Fiquei impressionado com o cuidado em relação ao paciente. Todas as etapas do processo foram explicadas com clareza, tudo muito bem organizado. Toda a equipe está de parabéns!","author":"Otávio Boaventura"},{"title":"“CIRURGIA IMPECÁVEL E CUIDADO EM CADA DETALHE!”","body":"Dr. Alexandre e equipe são super profissionais e atenciosos! Ele é experiente, criterioso e competente. A cirurgia foi um sucesso e o pós-operatório teve um cuidado impecável. As enfermeiras, secretárias e até a equipe da limpeza são incríveis! Recomendo a ProPlástica com toda confiança!","author":"Mariana Cardieri"},{"title":"“FUI PACIENTE E TAMBÉM COLABORADORA, RECOMENDO DE OLHOS FECHADOS!”","body":"Posso afirmar com certeza: o bom atendimento, a segurança e a qualidade da ProPlástica estão em primeiro lugar. Além de ter feito parte da equipe, também fui paciente e realizei 3 procedimentos com o Dr. Alexandre — todos com excelentes resultados. Parabéns à clínica e a toda equipe!","author":"Rosangela Vieira"}],
   process: {
-    eyebrow: 'Como Funciona',
-    heading: 'Do primeiro contato ao resultado',
-    headingEm: 'final',
+    eyebrow: "Como Funciona",
+    heading: "Do primeiro contato ao",
+    headingEm: "resultado",
     steps: [
-      { num: '01', title: 'AGENDAMENTO', description: 'Descreva como o paciente agenda e o que acontece antes da consulta.' },
-      { num: '02', title: 'CONSULTA', description: 'Descreva como é a primeira consulta e o que o médico avalia.' },
-      { num: '03', title: 'PROCEDIMENTO', description: 'Descreva como o procedimento é realizado e cuidados envolvidos.' },
-      { num: '04', title: 'RESULTADO', description: 'Descreva o resultado esperado e o acompanhamento pós-procedimento.' },
+      { num: "01", title: "AGENDAMENTO", description: "Entre em contato e agende sua consulta." },
+      { num: "02", title: "CONSULTA", description: "Avaliação detalhada e planejamento do tratamento." },
+      { num: "03", title: "PROCEDIMENTO", description: "Realização com técnica e segurança." },
+      { num: "04", title: "RESULTADO", description: "Acompanhamento e resultado esperado." },
     ],
   },
-
-  // ----------------------------------------------------------
-  // ANTES E DEPOIS
-  // Componente: BeforeAfterSection — grid de cards lado a lado
-  // disclaimer: texto de rodapé legal (opcional, mas recomendado)
-  // ----------------------------------------------------------
   beforeAfter: {
-    eyebrow: 'Resultados Reais',
-    heading: 'Transformações que',
-    headingEm: 'falam por si',
-    disclaimer: 'Resultados podem variar de acordo com cada organismo. Imagens de casos reais de pacientes que autorizaram o uso.',
-    items: [
-      { label: 'CASO 01 — DESCRIÇÃO', beforeSrc: '/images/antes-01.webp', afterSrc: '/images/depois-01.webp' },
-      { label: 'CASO 02 — DESCRIÇÃO', beforeSrc: '/images/antes-02.webp', afterSrc: '/images/depois-02.webp' },
-      { label: 'CASO 03 — DESCRIÇÃO', beforeSrc: '/images/antes-03.webp', afterSrc: '/images/depois-03.webp' },
-    ],
+    eyebrow: "Resultados Reais",
+    heading: "Transformações que",
+    headingEm: "falam por si",
+    disclaimer: "Resultados podem variar. Imagens de pacientes que autorizaram o uso.",
+    items: [] as { label: string; beforeSrc: string; afterSrc: string }[],
   },
-
-  // ----------------------------------------------------------
-  // FAQ — Perguntas Frequentes
-  // Componente: FaqSection — accordion com <details>/<summary> (zero JS)
-  // ----------------------------------------------------------
   faq: {
-    eyebrow: 'Dúvidas Frequentes',
-    heading: 'Perguntas que os pacientes mais fazem',
-    items: [
-      { question: 'PERGUNTA 1?', answer: 'Resposta completa e detalhada para a pergunta 1.' },
-      { question: 'PERGUNTA 2?', answer: 'Resposta completa e detalhada para a pergunta 2.' },
-      { question: 'PERGUNTA 3?', answer: 'Resposta completa e detalhada para a pergunta 3.' },
-      { question: 'PERGUNTA 4?', answer: 'Resposta completa e detalhada para a pergunta 4.' },
-      { question: 'PERGUNTA 5?', answer: 'Resposta completa e detalhada para a pergunta 5.' },
-    ],
+    eyebrow: "Dúvidas Frequentes",
+    heading: "Perguntas que os pacientes mais fazem",
+    items: [] as { question: string; answer: string }[],
   },
-
-  // ----------------------------------------------------------
-  // MAPA / LOCALIZAÇÃO
-  // Componente: MapSection — info de endereço + iframe do Google Maps
-  // mapsEmbed: URL de incorporação do Maps (Compartilhar → Incorporar)
-  // mapsUrl: URL normal do Maps para abrir no app
-  // ----------------------------------------------------------
   mapSection: {
-    eyebrow: 'Localização',
-    heading: 'Venha nos conhecer',
-    address: 'Rua, Número — Bairro, Cidade/UF',
-    complement: 'Referência de localização ou complemento',
-    schedule: 'Seg–Sex: 8h–18h | Sáb: 8h–12h',
-    phone: '(00) 0 0000-0000',
-    mapsUrl: 'https://maps.google.com/?q=endereço',
-    mapsEmbed: 'https://www.google.com/maps/embed?pb=COLE_AQUI',
+    eyebrow: "Localização",
+    heading: "Venha nos conhecer",
+    address: "",
+    complement: "",
+    schedule: "",
+    phone: "",
+    mapsUrl: "https://maps.google.com",
+    mapsEmbed: "https://www.google.com/maps/embed?pb=",
   },
-
-  // ----------------------------------------------------------
-  // SEÇÃO CLÍNICA / LOCALIZAÇÃO
-  // Componente: ClinicaSection — info da clínica + carrossel de fotos
-  // stats: até 4 diferenciais rápidos (value + label) — opcional
-  // ----------------------------------------------------------
   locationSection: {
-    eyebrow: 'Nossa Estrutura',
-    heading: 'Conheça o NOME DA CLÍNICA',
-    locations: [
-      {
-        city: 'CIDADE, UF',
-        name: 'NOME DA CLÍNICA',
-        address: 'Rua, Número — Bairro, Cidade/UF',
-        description: 'Descrição do espaço físico, ambiente e proposta da clínica.',
-      },
-    ],
-    stats: [
-      { value: 'DIFERENCIAL 1', label: 'Descrição curta do diferencial' },
-      { value: 'DIFERENCIAL 2', label: 'Descrição curta do diferencial' },
-      { value: 'DIFERENCIAL 3', label: 'Descrição curta do diferencial' },
-      { value: 'DIFERENCIAL 4', label: 'Descrição curta do diferencial' },
-    ],
+    eyebrow: "Nossa Estrutura",
+    heading: "Conheça o ALEXANDRA REZENDE - PROPLÁSTICA",
+    locations: [{ city: "Belo Horizonte, MG", name: "ALEXANDRA REZENDE - PROPLÁSTICA", address: "", description: "" }],
+    stats: [] as { value: string; label: string }[],
   },
-
-  // ----------------------------------------------------------
-  // GALERIA
-  // ----------------------------------------------------------
   gallery: {
-    eyebrow: 'Estrutura',
-    heading: 'Conheça o NOME DA CLÍNICA',
-    description: 'Descrição da estrutura da clínica, ambiente e diferenciais.',
-    images: [
-      { src: '/images/gallery-1.webp', alt: 'Descrição 1' },
-      { src: '/images/gallery-2.webp', alt: 'Descrição 2' },
-      { src: '/images/gallery-3.webp', alt: 'Descrição 3' },
-      { src: '/images/gallery-4.webp', alt: 'Descrição 4' },
-      { src: '/images/gallery-5.webp', alt: 'Descrição 5' },
-      { src: '/images/gallery-6.webp', alt: 'Descrição 6' },
-      { src: '/images/gallery-7.webp', alt: 'Descrição 7' },
-      { src: '/images/gallery-8.webp', alt: 'Descrição 8' },
-    ],
+    eyebrow: "Estrutura",
+    heading: "Conheça o ALEXANDRA REZENDE - PROPLÁSTICA",
+    description: "",
+    images: [] as { src: string; alt: string }[],
   },
-
-  // ----------------------------------------------------------
-  // MÉDICOS
-  // bio: parágrafos de apresentação do médico (opcional, mas recomendado)
-  // ----------------------------------------------------------
   doctors: [
     {
-      crm: 'CRM XXXXX-XXX | RQE XXXXX',
-      name: 'Dr. NOME SOBRENOME',
-      specialty: 'Especialidade e título do médico.',
-      bio: [
-        'Parágrafo 1 de apresentação do médico — formação, missão ou proposta de valor.',
-        'Parágrafo 2 — abordagem clínica, técnicas ou diferenciais.',
-        'Parágrafo 3 — compromisso com o paciente e resultados esperados.',
-      ],
-      credentials: [
-        'Graduado em medicina pela UNIVERSIDADE',
-        'Residência em ESPECIALIDADE pelo HOSPITAL',
-        'Membro de SOCIEDADE',
-      ],
-      photo: '/images/dr-nome.webp',
+      crm: "",
+      name: "Alexandra Rezende",
+      specialty: "Transplante Capilar",
+      bio: ["A Dra. Alexandra Rezende e o Dr. Alexandre Marcondes são renomados especialistas em transplante capilar, dedicados a ajudar pacientes a recuperar a autoestima através de procedimentos modernos e seguros. Na ProPlástica, utilizamos a técnica FUE para garantir resultados naturais e permanentes, sem cicatrizes lineares. Nossa equipe está comprometida com o conforto e bem-estar de cada paciente, desde a consulta inicial até a recuperação."],
+      credentials: ["Dra. Alexandra Rezende e Dr. Alexandre Marcondes"],
+      photo: "/images/doctor.webp",
     },
   ],
-
-  // ----------------------------------------------------------
-  // LINKS ÚTEIS — subpágina em /links-uteis/
-  // Cada item vira um botão na página de link-in-bio.
-  // Deixe items vazio se não for usar.
-  // ----------------------------------------------------------
-  linksUteis: {
-    items: [
-      // { label: 'Instagram', href: 'https://instagram.com/clinica' },
-      // { label: 'Agendar consulta', href: 'https://doctoralia.com.br/...' },
-      // { label: 'Site', href: 'https://clinica.com.br' },
-    ] as { label: string; href: string }[],
-  },
-
-  // ----------------------------------------------------------
-  // FOOTER
-  // ----------------------------------------------------------
+  linksUteis: { items: [] as { label: string; href: string }[] },
   footer: {
     year: new Date().getFullYear(),
-    copyright: 'Dr. NOME SOBRENOME · Todos os direitos reservados',
+    copyright: "Dr. Alexandre Marcondes Rezende · Todos os direitos reservados",
   },
-  // ──────────────────────────────────────────────────────────────
-  // OPCIONAL: HeroSlider — ativo quando definido, substitui HeroSection estático
-  // Cada slide tem: image (caminho em /images/), headingLines[], ctaText
-  // Exemplo:
-  // heroSlides: [
-  //   { image: '/images/slide-1.jpg', headingLines: ['Rinoplastia', 'Natural'], ctaText: 'Agendar' },
-  //   { image: '/images/slide-2.jpg', headingLines: ['Resultado', 'Definitivo'], ctaText: 'Agendar' },
-  // ],
-  // ──────────────────────────────────────────────────────────────
 } as const
