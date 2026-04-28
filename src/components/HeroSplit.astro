@@ -1,0 +1,246 @@
+---
+// HeroSplit — hero 2 colunas: conteúdo à esquerda + foto do médico à direita
+// Ideal quando o cliente tem foto de estúdio de alta qualidade sem fundo.
+// Usa hero.photo (caminho da imagem do médico, ex: /images/dr-nome.webp)
+// Não precisa de bg-hero.png — fundo é var(--lp-dark) sólido.
+import { CLIENT } from '@/config/client';
+import HeroForm from './HeroForm';
+
+const { hero } = CLIENT;
+const doc = CLIENT.doctors[0];
+const heroPhoto = (hero as any).photo as string | undefined ?? doc.photo;
+const lastLine = hero.headingLines[hero.headingLines.length - 1];
+const firstLines = hero.headingLines.slice(0, -1);
+---
+
+<section class="hs-section">
+  <div class="hs-inner">
+
+    <!-- Coluna esquerda — conteúdo -->
+    <div class="hs-col-content">
+
+      <img
+        src={CLIENT.logo}
+        alt={CLIENT.name}
+        width="160"
+        height="80"
+        fetchpriority="high"
+        style="height:64px;width:auto;object-fit:contain;align-self:flex-start;animation:heroSlideDown 0.55s cubic-bezier(0.16,1,0.3,1) both;"
+      />
+
+      <p class="hs-eyebrow" style="animation:heroSlideUp 0.55s cubic-bezier(0.16,1,0.3,1) 0.1s both;">{hero.eyebrow}</p>
+
+      <h1 class="hs-heading" style="animation:heroSlideUp 0.65s cubic-bezier(0.16,1,0.3,1) 0.18s both;">
+        {firstLines.map(line => <span style="display:block">{line}</span>)}
+        <em>{lastLine}</em>
+      </h1>
+
+      <div class="hs-sep" style="animation:heroSlideUp 0.5s cubic-bezier(0.16,1,0.3,1) 0.32s both;"></div>
+
+      <div class="hs-creds" style="animation:heroSlideUp 0.55s cubic-bezier(0.16,1,0.3,1) 0.38s both;">
+        {hero.credentials.map(cred => <p>{cred}</p>)}
+      </div>
+
+      <div style="animation:heroSlideUp 0.55s cubic-bezier(0.16,1,0.3,1) 0.45s both;width:100%">
+        <HeroForm client:load />
+      </div>
+
+    </div>
+
+    <!-- Coluna direita — foto do médico -->
+    <div class="hs-col-photo" aria-hidden="true">
+      <div class="hs-photo-wrap" style="animation:heroSlideUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.12s both;">
+        <img
+          src={heroPhoto}
+          alt={doc.name}
+          class="hs-photo"
+          fetchpriority="high"
+          decoding="async"
+        />
+        <!-- Gradiente inferior para fundir com o fundo -->
+        <div class="hs-photo-fade"></div>
+        <!-- Badge de credencial sobre a foto -->
+        <div class="hs-badge">
+          <div class="hs-badge-name">{doc.name}</div>
+          <div class="hs-badge-crm">{doc.crm}</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .hs-section {
+    width: 100%;
+    min-height: 100dvh;
+    background: var(--lp-dark);
+    position: relative;
+    overflow: hidden;
+    /* Detalhe: linha dourada sutil no topo */
+    border-top: 2px solid rgba(196,163,110,0.25);
+  }
+
+  .hs-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100dvh;
+    align-items: center;
+    gap: clamp(2rem, 4vw, 5rem);
+  }
+
+  /* ── Coluna conteúdo ── */
+  .hs-col-content {
+    display: flex;
+    flex-direction: column;
+    padding: 72px 0 60px;
+  }
+
+  .hs-eyebrow {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--lp-gold);
+    margin: 20px 0 16px;
+  }
+
+  .hs-heading {
+    font-family: var(--font-display);
+    font-size: clamp(38px, 4.5vw, 60px);
+    font-weight: 400;
+    color: #fff;
+    line-height: 1.06;
+    margin: 0 0 22px;
+    letter-spacing: -0.02em;
+  }
+  .hs-heading em { font-style: italic; color: var(--lp-gold); }
+
+  .hs-sep {
+    width: 48px;
+    height: 2px;
+    background: var(--lp-gold);
+    margin-bottom: 18px;
+    border-radius: 2px;
+  }
+
+  .hs-creds {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin-bottom: 28px;
+  }
+  .hs-creds p {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 500;
+    color: rgba(232,231,218,0.65);
+    margin: 0;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── Coluna foto ── */
+  .hs-col-photo {
+    position: relative;
+    align-self: stretch;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .hs-photo-wrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 580px;
+  }
+
+  .hs-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    /* Máscara: corta nas laterais com gradiente, foto vai até o fundo */
+    mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%),
+                linear-gradient(to top, transparent 0%, black 8%);
+    mask-composite: intersect;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%),
+                        linear-gradient(to top, transparent 0%, black 8%);
+    -webkit-mask-composite: source-in;
+  }
+
+  .hs-photo-fade {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30%;
+    background: linear-gradient(to top, var(--lp-dark) 0%, transparent 100%);
+    pointer-events: none;
+  }
+
+  /* Badge sobre a foto */
+  .hs-badge {
+    position: absolute;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(26,22,18,0.9);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(196,163,110,0.25);
+    border-radius: 12px;
+    padding: 12px 22px;
+    text-align: center;
+    white-space: nowrap;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  }
+  .hs-badge-name {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 600;
+    color: #F7F4EF;
+    margin-bottom: 3px;
+  }
+  .hs-badge-crm {
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--lp-gold);
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 900px) {
+    .hs-inner {
+      grid-template-columns: 1fr;
+      min-height: auto;
+      gap: 0;
+    }
+    .hs-col-photo {
+      order: -1;
+      height: 55vw;
+      min-height: 280px;
+    }
+    .hs-photo-wrap { min-height: 0; height: 100%; }
+    .hs-photo {
+      mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+    }
+    .hs-badge { display: none; }
+    .hs-col-content {
+      padding: 28px 0 60px;
+      align-items: center;
+      text-align: center;
+    }
+    .hs-col-content > img { align-self: center; }
+    .hs-heading { font-size: clamp(32px, 8vw, 48px); }
+    .hs-sep { margin-left: auto; margin-right: auto; }
+    .hs-creds p { color: rgba(232,231,218,0.55); }
+  }
+</style>

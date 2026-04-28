@@ -1,0 +1,26 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import HeroSection from '@/components/HeroSection.astro';
+import LocationBar from '@/components/LocationBar.astro';
+import DesiresSection from '@/components/DesiresSection.astro';
+import ServicesSection from '@/components/ServicesSection.astro';
+import TestimonialsCarousel from '@/components/TestimonialsCarousel';
+import GalleryCarousel from '@/components/GalleryCarousel';
+import ClinicaSection from '@/components/ClinicaSection';
+import DoctorsSection from '@/components/DoctorsSection.astro';
+import Footer from '@/components/Footer.astro';
+---
+
+<Layout>
+  <main>
+    <HeroSection />
+    <LocationBar />
+    <DesiresSection />
+    <ServicesSection />
+    <TestimonialsCarousel client:idle />
+    <GalleryCarousel client:idle />
+    <ClinicaSection client:idle />
+    <DoctorsSection />
+    <Footer />
+  </main>
+</Layout>

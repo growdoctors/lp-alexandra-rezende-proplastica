@@ -1,0 +1,183 @@
+---
+import { CLIENT } from '@/config/client';
+import '@/styles/global.css';
+import CookieBanner from '@/components/CookieBanner';
+
+const fontDisplay = (CLIENT as any).fonts?.display ?? 'Cormorant Garamond';
+const fontBody    = (CLIENT as any).fonts?.body    ?? 'Montserrat';
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{CLIENT.seo.title}</title>
+    <meta name="description" content={CLIENT.seo.description} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={CLIENT.siteUrl + "/"} />
+    <link rel="icon" type="image/png" href={CLIENT.favicon} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:url" content={CLIENT.siteUrl} />
+    <meta property="og:site_name" content={CLIENT.name} />
+    <meta property="og:title" content={CLIENT.seo.title} />
+    <meta property="og:description" content={CLIENT.seo.description} />
+    <meta property="og:image" content={CLIENT.siteUrl + CLIENT.og.image} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={CLIENT.seo.title} />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={CLIENT.seo.title} />
+    <meta name="twitter:description" content={CLIENT.seo.description} />
+    <meta name="twitter:image" content={CLIENT.siteUrl + CLIENT.og.image} />
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": CLIENT.schema.type,
+      "name": CLIENT.doctors[0].name,
+      "description": CLIENT.seo.description,
+      "url": CLIENT.siteUrl,
+      "image": CLIENT.siteUrl + CLIENT.og.image,
+      "medicalSpecialty": "Anesthesiology",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": CLIENT.schema.streetAddress,
+        "addressLocality": CLIENT.schema.addressLocality,
+        "addressRegion": CLIENT.schema.addressRegion,
+        "postalCode": CLIENT.schema.postalCode,
+        "addressCountry": "BR",
+      },
+      "sameAs": CLIENT.schema.sameAs,
+    })} />
+
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href={CLIENT.fontsUrl} rel="stylesheet" />
+    <style is:inline set:html={`:root{--font-display:'${fontDisplay}',Georgia,serif;--font-body:'${fontBody}',sans-serif;}`}></style>
+
+    <!-- Preconnect para origens externas -->
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="preconnect" href="https://connect.facebook.net" crossorigin />
+    <link rel="preconnect" href="https://scripts.clarity.ms" crossorigin />
+    <link rel="dns-prefetch" href="https://www.facebook.com" />
+
+    <!-- Preload LCP mobile -->
+    <link
+      rel="preload"
+      as="image"
+      href="/images/bg-hero-mobile.webp"
+      media="(max-width: 768px)"
+      fetchpriority="high"
+    />
+  </head>
+  <body>
+    <!-- GTM noscript -->
+    <noscript>
+      <iframe
+        src={`https://www.googletagmanager.com/ns.html?id=${CLIENT.gtmId}`}
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"
+      ></iframe>
+    </noscript>
+
+    <slot />
+
+    <!-- Banner LGPD -->
+    <CookieBanner client:idle />
+
+    <!-- GTM com delay de 2s após load -->
+    <script is:inline define:vars={{ gtmId: CLIENT.gtmId }}>
+      (function () {
+        function loadGTM() {
+          (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+            var f = d.getElementsByTagName(s)[0],
+              j = d.createElement(s),
+              dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+          })(window, document, 'script', 'dataLayer', gtmId);
+        }
+        if (document.readyState === 'complete') {
+          setTimeout(loadGTM, 2000);
+        } else {
+          window.addEventListener('load', function () { setTimeout(loadGTM, 2000); }, { once: true });
+        }
+      })();
+    </script>
+
+    <!-- Scroll form to center on CTA click -->
+    <script is:inline>
+      document.addEventListener('click',function(e){var a=e.target.closest('a[href="#utmCaptureForm"]');if(!a)return;e.preventDefault();var els=document.querySelectorAll('[id="utmCaptureForm"]'),t;for(var i=0;i<els.length;i++){if(els[i].offsetParent!==null){t=els[i];break;}}if(t)t.scrollIntoView({behavior:'smooth',block:'center'});});
+    </script>
+
+    <!-- Scroll reveal -->
+<script is:inline>
+  (function(){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(!e.isIntersecting)return;
+        var el=e.target;
+        el.classList.add('reveal--visible');
+        if(el.classList.contains('reveal-list'))el.classList.add('reveal-list--visible');
+        io.unobserve(el);
+      });
+    },{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+    function init(){
+      document.querySelectorAll('.reveal,.reveal-list').forEach(function(el){io.observe(el);});
+    }
+    if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init);}
+    else{init();}
+  })();
+</script>
+
+    <!-- UTM Propagator — propaga UTMs da URL para links clicados na página -->
+    <script is:inline>
+      (function(){
+        var KEYS=['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','fbclid'];
+        var SKIP=['instagram.com','share.google','google.com/maps','waze.com','privacidade.growdoc'];
+        var pageQ=new URLSearchParams(window.location.search);
+        var captured=new URLSearchParams();
+        var hasUTM=false;
+        KEYS.forEach(function(k){
+          if(pageQ.has(k)){captured.set(k,pageQ.get(k));hasUTM=true;}
+        });
+        if(!hasUTM)return;
+        function build(href){
+          try{
+            var u=new URL(href);
+            KEYS.forEach(function(k){u.searchParams.delete(k);});
+            captured.forEach(function(v,k){u.searchParams.set(k,v);});
+            return u.toString();
+          }catch(e){return href;}
+        }
+        function skip(href){
+          if(!href||href[0]==='#'||href.indexOf('elementor-action')>-1)return true;
+          return SKIP.some(function(d){return href.indexOf(d)>-1;});
+        }
+        document.addEventListener('click',function(e){
+          var a=e.target.closest('a[href]');
+          if(!a)return;
+          var href=a.getAttribute('href')||'';
+          if(skip(href))return;
+          var novo=build(a.href);
+          if(novo===a.href)return;
+          e.preventDefault();
+          var target=a.getAttribute('target');
+          if(target==='_blank'){window.open(novo,'_blank');}
+          else{window.location.href=novo;}
+        },true);
+      })();
+    </script>
+  </body>
+</html>

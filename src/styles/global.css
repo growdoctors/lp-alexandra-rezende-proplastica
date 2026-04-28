@@ -1,0 +1,511 @@
+@import "tailwindcss";
+
+/* ============================================================
+   VARIÁVEIS DO PROJETO
+   Ajuste estas variáveis para a identidade do cliente.
+   ============================================================ */
+:root {
+  --lp-gold:  #c4a36e;
+  --lp-dark:  #1A1612;
+  --lp-cream: #F7F4EF;
+  --lp-olive: #8a8568;
+  --lp-green: #18b429;
+
+  /* Fontes (definidas via Google Fonts no Layout.astro) */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'Montserrat', sans-serif;
+
+  --radius: 0.75rem;
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--lp-cream);
+  color: var(--lp-dark);
+  min-height: 100vh;
+}
+
+/* ============================================================
+   KEYFRAMES
+   ============================================================ */
+@keyframes heroEnter {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes heroSlideUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes heroSlideDown {
+  from { opacity: 0; transform: translateY(-14px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes sepGrow {
+  from { width: 0; opacity: 0; }
+  to   { width: 48px; opacity: 1; }
+}
+@keyframes fadeScaleIn {
+  from { opacity: 0; transform: scale(0.96) translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px) scale(0.98);
+  transition: opacity 0.65s cubic-bezier(0.16,1,0.3,1), transform 0.65s cubic-bezier(0.16,1,0.3,1);
+  will-change: opacity, transform;
+}
+.reveal--visible {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal-list > * {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal-list--visible > *:nth-child(1) { opacity: 1; transform: none; transition-delay: 0ms; }
+.reveal-list--visible > *:nth-child(2) { opacity: 1; transform: none; transition-delay: 100ms; }
+.reveal-list--visible > *:nth-child(3) { opacity: 1; transform: none; transition-delay: 200ms; }
+.reveal-list--visible > *:nth-child(4) { opacity: 1; transform: none; transition-delay: 300ms; }
+.reveal-list--visible > *:nth-child(5) { opacity: 1; transform: none; transition-delay: 400ms; }
+.reveal-list--visible > *:nth-child(n+6) { opacity: 1; transform: none; transition-delay: 500ms; }
+
+/* Linha dourada animada */
+.lp-gold-rule-animated {
+  display: block;
+  height: 2px;
+  background: var(--lp-gold);
+  width: 0;
+  margin: 1rem auto 0;
+  transition: width 0.6s ease 0.3s;
+}
+.reveal--visible .lp-gold-rule-animated {
+  width: 3rem;
+}
+
+/* ============================================================
+   UTM FORM (formulário padrão GrowDoc — NÃO ALTERAR)
+   ============================================================ */
+.utm-form-wrapper { width: 100%; font-family: var(--font-body); }
+
+.utm-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+@media (max-width: 640px) { .utm-form-grid { grid-template-columns: 1fr; } }
+
+.utm-form-group { position: relative; }
+
+.utm-form-label {
+  display: block;
+  color: #6b6150;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.utm-form-label .required { color: #c0392b; margin-left: 2px; }
+
+.utm-form-input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid rgba(196,163,110,0.3);
+  border-radius: 10px;
+  font-size: 14px;
+  color: #27231d;
+  background: rgba(255,255,255,0.75);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  font-family: var(--font-body);
+  outline: none;
+  display: block;
+}
+.utm-form-input:hover  { background: rgba(255,255,255,0.95); }
+.utm-form-input:focus  { background: #fff; border-color: var(--lp-gold); box-shadow: 0 0 0 3px color-mix(in srgb, var(--lp-gold) 14%, transparent); }
+.utm-form-input::placeholder { color: #b5aa9a; }
+.utm-form-input.error  { border-color: rgba(192,57,43,0.5); box-shadow: 0 0 0 3px rgba(192,57,43,0.08); }
+
+.utm-form-error-message {
+  color: #c0392b;
+  font-size: 11px;
+  margin-top: 4px;
+  display: none;
+  font-weight: 500;
+}
+.utm-form-group.has-error .utm-form-error-message { display: block; }
+
+.utm-form-submit {
+  width: 100%;
+  padding: 15px 24px;
+  background: linear-gradient(135deg, var(--lp-green) 0%, #36c747 50%, var(--lp-green) 100%);
+  background-size: 200% auto;
+  color: #fff;
+  border: none;
+  border-radius: 9999px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-position 0.4s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  font-family: var(--font-body);
+  box-shadow: 0 4px 18px rgba(24,180,41,0.35);
+  display: block;
+}
+.utm-form-submit:hover:not(:disabled) { background-position: right center; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(24,180,41,0.45); }
+.utm-form-submit:disabled { background: #cdc8c0; cursor: not-allowed; transform: none; box-shadow: none; }
+
+.utm-form-loading { display: none; text-align: center; color: #8a8568; font-size: 12px; margin-top: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+.utm-form-loading.active { display: block; }
+
+.utm-form-privacy { margin-bottom: 14px; }
+.utm-form-privacy-label { display: flex; align-items: center; gap: 10px; cursor: pointer; user-select: none; }
+.utm-form-privacy-checkbox { width: 16px; height: 16px; min-width: 16px; cursor: pointer; accent-color: var(--lp-gold); }
+.utm-form-privacy-text { font-size: 12px; color: #5c5248; line-height: 1.45; }
+.utm-form-privacy-link { color: #7a5c14; text-decoration: underline; font-weight: 600; }
+
+/* ============================================================
+   FORM CARD
+   ============================================================ */
+.lp-form-card {
+  background: var(--lp-cream);
+  border-radius: 18px;
+  border-top: 3px solid var(--lp-gold);
+  padding: 26px 26px 30px;
+  box-shadow: 0 28px 70px rgba(16,12,8,0.35), 0 4px 14px rgba(16,12,8,0.15);
+}
+.lp-form-card-title {
+  font-family: var(--font-display);
+  font-size: 23px;
+  font-weight: 600;
+  color: #27231d;
+  margin: 0 0 18px;
+  letter-spacing: -0.01em;
+}
+
+/* ============================================================
+   HERO SECTION
+   ============================================================ */
+.lp-hero-section {
+  width: 100%;
+  min-height: 740px;
+  background-color: var(--lp-dark);
+  background-image: url('/images/bg-hero.png');
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  position: relative;
+}
+.lp-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(108deg, rgba(20,16,12,0.88) 0%, rgba(20,16,12,0.70) 40%, rgba(20,16,12,0.20) 68%, transparent 100%);
+  pointer-events: none;
+}
+.lp-hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1216px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  min-height: 740px;
+  align-items: center;
+}
+.lp-hero-col {
+  width: 490px;
+  min-width: 490px;
+  padding: 60px 0;
+  display: flex;
+  flex-direction: column;
+  animation: heroEnter 0.7s cubic-bezier(0.16,1,0.3,1) both;
+}
+.lp-hero-eyebrow {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: var(--lp-gold);
+  text-transform: uppercase;
+  margin: 18px 0 14px;
+}
+.lp-hero-heading {
+  font-family: var(--font-display);
+  font-size: 52px;
+  font-weight: 400;
+  color: #fff;
+  line-height: 1.08;
+  margin: 0 0 22px;
+  letter-spacing: -0.01em;
+}
+.lp-hero-heading em { font-style: italic; color: var(--lp-gold); }
+.lp-hero-sep {
+  height: 2px;
+  background: var(--lp-gold);
+  margin-bottom: 18px;
+  opacity: 0;
+  animation: sepGrow 0.6s cubic-bezier(0.16,1,0.3,1) 0.3s forwards;
+}
+.lp-hero-creds { display: flex; flex-direction: column; gap: 3px; margin-bottom: 26px; }
+.lp-hero-creds p { font-family: var(--font-body); font-size: 11px; font-weight: 500; color: rgba(232,231,218,0.7); margin: 0; letter-spacing: 0.04em; }
+
+@media (max-width: 768px) {
+  .lp-hero-section {
+    min-height: auto;
+    background-image: url('/images/bg-hero-mobile.webp');
+    background-size: contain;
+    background-position: 50% 0%;
+    background-color: var(--lp-cream);
+  }
+  .lp-hero-overlay { display: none; }
+  .lp-hero-inner { min-height: auto; padding: 430px 20px 40px; }
+  .lp-hero-col { width: 100%; min-width: 0; padding: 0; align-items: center; text-align: center; }
+  .lp-hero-eyebrow { margin: 14px 0 10px; }
+  .lp-hero-heading { font-size: 36px; color: #27231d; }
+  .lp-hero-sep { margin-left: auto; margin-right: auto; }
+  .lp-hero-creds p { color: #6b6150; }
+  .lp-form-card { box-shadow: 0 8px 32px rgba(39,35,29,0.12); width: 100%; }
+}
+
+/* ============================================================
+   BOTÃO CTA VERDE
+   ============================================================ */
+.btn-cta {
+  background: linear-gradient(135deg, var(--lp-green) 0%, #36c747 60%, var(--lp-green) 100%);
+  background-size: 200% auto;
+  color: #fff;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 9999px;
+  padding: 15px 32px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: background-position 0.4s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  border: none;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(24,180,41,0.3);
+}
+.btn-cta:hover { background-position: right center; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(24,180,41,0.45); }
+
+/* ============================================================
+   SEÇÕES — LAYOUT COMPARTILHADO
+   ============================================================ */
+.lp-section-pad { padding: 80px 24px; }
+.lp-section-inner { max-width: 1216px; margin: 0 auto; }
+
+@media (max-width: 768px) { .lp-section-pad { padding: 56px 20px; } }
+
+/* ============================================================
+   TIPOGRAFIA COMPARTILHADA
+   ============================================================ */
+.lp-eyebrow {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--lp-gold);
+  margin-bottom: 12px;
+}
+.lp-section-heading {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+}
+.lp-gold-rule { width: 40px; height: 2px; background: var(--lp-gold); margin: 0 auto 40px; }
+
+/* ============================================================
+   GRIDS
+   ============================================================ */
+.lp-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.lp-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.lp-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+
+@media (max-width: 768px) {
+  .lp-grid-3 { grid-template-columns: 1fr; gap: 16px; }
+  .lp-grid-4 { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .lp-grid-2 { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   CARD HOVER
+   ============================================================ */
+.lp-card-lift { transition: transform 0.28s ease, box-shadow 0.28s ease; }
+.lp-card-lift:hover { transform: translateY(-5px); box-shadow: 0 18px 52px rgba(26,22,18,0.14) !important; }
+
+/* ============================================================
+   GALERIA
+   ============================================================ */
+.gallery-item { position: relative; overflow: hidden; border-radius: 12px; }
+.gallery-item img { transition: transform 0.55s ease !important; }
+.gallery-item:hover img { transform: scale(1.06) !important; }
+.gallery-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(20,16,12,0.55) 0%, transparent 55%); opacity: 0; transition: opacity 0.35s ease; }
+.gallery-item:hover .gallery-overlay { opacity: 1; }
+
+/* ============================================================
+   DEPOIMENTOS — GRID
+   ============================================================ */
+.lp-testimonials-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 768px) { .lp-testimonials-grid { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   STARS (depoimentos)
+   ============================================================ */
+.lp-stars { display: flex; gap: 3px; }
+.lp-stars span { color: #f5a623; font-size: 18px; }
+
+/* ============================================================
+   VISUAL REFRESH
+   ============================================================ */
+
+/* Tipografia */
+.lp-eyebrow {
+  letter-spacing: 0.15em !important;
+  font-size: 0.72rem !important;
+}
+.lp-section-heading {
+  line-height: 1.1 !important;
+}
+
+/* Espaçamentos responsivos */
+:root {
+  --lp-section-py: clamp(5rem, 10vw, 9rem);
+  --lp-gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+.lp-section-pad {
+  padding-block: var(--lp-section-py) !important;
+}
+
+/* Hero overlay */
+.lp-hero-section {
+  position: relative;
+}
+.lp-hero-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 1;
+}
+.lp-hero-section > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Cards hover lift */
+.lp-card-lift {
+  border: 1px solid rgba(196,163,110,0.2) !important;
+  transition: transform 250ms ease, box-shadow 250ms ease;
+}
+.lp-card-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+}
+
+/* CTA pulse */
+@keyframes cta-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(196,163,110,0.4); }
+  50%       { box-shadow: 0 0 0 10px rgba(196,163,110,0); }
+}
+.btn-cta {
+  animation: cta-pulse 3s ease-in-out infinite;
+  transition: transform 200ms ease;
+}
+.btn-cta:hover {
+  transform: scale(1.02);
+  animation: none;
+}
+
+/* Hero drift */
+@keyframes hero-drift {
+  0%, 100% { background-position: 50% 50%; }
+  50%       { background-position: 52% 48%; }
+}
+.lp-hero-section {
+  animation: hero-drift 18s ease-in-out infinite;
+}
+
+/* Foto do médico hover */
+.doctor-photo-wrap {
+  overflow: hidden;
+  border-radius: 12px;
+}
+.doctor-photo-wrap img {
+  transition: transform 300ms ease;
+  display: block;
+  width: 100%;
+}
+.doctor-photo-wrap:hover img {
+  transform: scale(1.03);
+}
+
+/* ============================================================
+   CLÍNICA SECTION — layout split info | carrossel
+   ============================================================ */
+.clinica-layout {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+@media (max-width: 900px) {
+  .clinica-layout { grid-template-columns: 1fr; gap: 36px; }
+}
+
+/* Gold rule shimmer on reveal */
+.lp-gold-rule {
+  position: relative;
+  overflow: hidden;
+}
+.lp-gold-rule::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.5) 50%, transparent 100%);
+  background-size: 200% 100%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.reveal--visible .lp-gold-rule::after {
+  opacity: 1;
+  animation: shimmer 1.2s ease 0.4s both;
+}
+
+/* Credential list fade-in stagger (generic) */
+.lp-doc-creds-list li {
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.reveal--visible .lp-doc-creds-list li:nth-child(1) { opacity:1; transform:none; transition-delay: 0.15s; }
+.reveal--visible .lp-doc-creds-list li:nth-child(2) { opacity:1; transform:none; transition-delay: 0.25s; }
+.reveal--visible .lp-doc-creds-list li:nth-child(3) { opacity:1; transform:none; transition-delay: 0.35s; }
+.reveal--visible .lp-doc-creds-list li:nth-child(4) { opacity:1; transform:none; transition-delay: 0.45s; }
+.reveal--visible .lp-doc-creds-list li:nth-child(n+5) { opacity:1; transform:none; transition-delay: 0.55s; }

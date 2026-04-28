@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /links-uteis
+
+Sitemap: https://DOMINIO-DO-SITE.com.br/sitemap.xml

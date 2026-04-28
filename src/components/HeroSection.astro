@@ -1,0 +1,48 @@
+---
+import { CLIENT } from '@/config/client';
+import HeroForm from './HeroForm';
+
+const { hero } = CLIENT;
+const lastLine = hero.headingLines[hero.headingLines.length - 1];
+const firstLines = hero.headingLines.slice(0, -1);
+---
+
+<section class="lp-hero-section">
+  <div class="lp-hero-overlay" aria-hidden="true"></div>
+  <div class="lp-hero-inner">
+    <div class="lp-hero-col">
+
+      <img
+        src={CLIENT.logo}
+        alt={CLIENT.name}
+        width="160"
+        height="80"
+        fetchpriority="high"
+        style="height:72px;width:auto;object-fit:contain;align-self:flex-start;animation:heroSlideDown 0.55s cubic-bezier(0.16,1,0.3,1) both;"
+      />
+
+      <p class="lp-hero-eyebrow" style="animation:heroSlideUp 0.55s cubic-bezier(0.16,1,0.3,1) 0.1s both;">{hero.eyebrow}</p>
+
+      <h1 class="lp-hero-heading" style="animation:heroSlideUp 0.65s cubic-bezier(0.16,1,0.3,1) 0.18s both;">
+        {firstLines.map(line => <span style="display:block">{line}</span>)}
+        <em>{lastLine}</em>
+      </h1>
+
+      <div class="lp-hero-sep"></div>
+
+      <div class="lp-hero-creds" style="animation:heroSlideUp 0.55s cubic-bezier(0.16,1,0.3,1) 0.38s both;">
+        {hero.credentials.map(cred => <p>{cred}</p>)}
+      </div>
+
+      <HeroForm client:load />
+
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Mobile: hero mobile layout */
+  @media (max-width: 768px) {
+    .lp-hero-col > img { align-self: center !important; }
+  }
+</style>

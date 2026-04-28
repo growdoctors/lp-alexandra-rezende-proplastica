@@ -1,0 +1,213 @@
+---
+import { CLIENT } from '@/config/client';
+
+const mapSection = (CLIENT as any).mapSection as {
+  eyebrow: string;
+  heading: string;
+  address: string;
+  complement?: string;
+  mapsUrl: string;       // link para abrir no Google Maps (href do botão)
+  mapsEmbed: string;     // src do iframe (link de incorporação do Google Maps)
+  schedule?: string;     // ex: "Seg–Sex: 8h–18h | Sáb: 8h–12h"
+  phone?: string;
+};
+---
+
+<section class="lp-section-pad" style="background-color: var(--lp-cream)">
+  <div class="lp-section-inner">
+
+    <div class="reveal" style="text-align:center;margin-bottom:52px">
+      <span class="lp-eyebrow">{mapSection.eyebrow}</span>
+      <h2 class="lp-section-heading" style="font-size:clamp(28px,3.5vw,44px);color:var(--lp-dark);text-align:center;margin-top:8px">
+        {mapSection.heading}
+      </h2>
+      <div class="lp-gold-rule" style="margin-top:20px"></div>
+    </div>
+
+    <div class="map-layout">
+
+      <!-- Informações -->
+      <div class="reveal map-info">
+
+        <div class="map-info-block">
+          <div class="map-info-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--lp-gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+            </svg>
+          </div>
+          <div>
+            <p class="map-info-label">Endereço</p>
+            <p class="map-info-value">{mapSection.address}</p>
+            {mapSection.complement && <p class="map-info-sub">{mapSection.complement}</p>}
+          </div>
+        </div>
+
+        {mapSection.schedule && (
+          <div class="map-info-block">
+            <div class="map-info-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--lp-gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <div>
+              <p class="map-info-label">Horário</p>
+              <p class="map-info-value">{mapSection.schedule}</p>
+            </div>
+          </div>
+        )}
+
+        {mapSection.phone && (
+          <div class="map-info-block">
+            <div class="map-info-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--lp-gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z"/>
+              </svg>
+            </div>
+            <div>
+              <p class="map-info-label">Telefone / WhatsApp</p>
+              <p class="map-info-value">{mapSection.phone}</p>
+            </div>
+          </div>
+        )}
+
+        <a
+          href={mapSection.mapsUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="map-cta-directions"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polygon points="3 11 22 2 13 21 11 13 3 11"/>
+          </svg>
+          COMO CHEGAR
+        </a>
+
+        <a href="#utmCaptureForm" class="btn-cta map-cta-main">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          AGENDAR CONSULTA
+        </a>
+      </div>
+
+      <!-- Mapa -->
+      <div class="reveal map-embed-wrap">
+        <iframe
+          src={mapSection.mapsEmbed}
+          title="Localização no mapa"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          class="map-iframe"
+          allowfullscreen
+        ></iframe>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .map-layout {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+  }
+
+  .map-info {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .map-info-block {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .map-info-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: rgba(196,163,110,0.08);
+    border: 1px solid rgba(196,163,110,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .map-info-label {
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--lp-gold);
+    margin: 0 0 4px;
+  }
+
+  .map-info-value {
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--lp-dark);
+    line-height: 1.55;
+    margin: 0;
+    font-weight: 500;
+  }
+
+  .map-info-sub {
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: #6b6150;
+    margin: 3px 0 0;
+  }
+
+  .map-cta-directions {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--lp-dark);
+    border: 1.5px solid rgba(196,163,110,0.5);
+    border-radius: 9999px;
+    padding: 12px 22px;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+    align-self: flex-start;
+  }
+  .map-cta-directions:hover {
+    border-color: var(--lp-gold);
+    background: rgba(196,163,110,0.08);
+  }
+
+  .map-cta-main { align-self: flex-start; }
+
+  .map-embed-wrap {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(26,22,18,0.14);
+    aspect-ratio: 4/3;
+    background: rgba(196,163,110,0.08);
+  }
+
+  .map-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+  }
+
+  @media (max-width: 900px) {
+    .map-layout {
+      grid-template-columns: 1fr;
+    }
+    .map-embed-wrap { aspect-ratio: 16/9; }
+    .map-cta-main { align-self: stretch; justify-content: center; }
+    .map-cta-directions { align-self: stretch; justify-content: center; }
+  }
+</style>
