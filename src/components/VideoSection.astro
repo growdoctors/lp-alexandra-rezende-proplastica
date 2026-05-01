@@ -1,0 +1,27 @@
+---
+import { CLIENT } from '@/config/client';
+
+const { videoSection } = CLIENT;
+---
+
+<section class="lp-section-pad lp-video-section">
+  <div class="lp-section-inner lp-section-inner--wide">
+    <div class="lp-video-shell lp-video-layout">
+      <div class="reveal lp-video-copy">
+        <h2 class="lp-video-title">{videoSection.title}</h2>
+        <p class="lp-video-body">{videoSection.body}</p>
+      </div>
+
+      <div class="reveal lp-video-media">
+        <video
+          class="lp-video-player"
+          src={videoSection.src}
+          poster={videoSection.poster}
+          controls
+          preload="metadata"
+          controlslist="nodownload"
+        ></video>
+      </div>
+    </div>
+  </div>
+</section>
