@@ -1,0 +1,270 @@
+---
+import '@/styles/transplante-capilar.css';
+import CookieBanner from '@/components/CookieBanner';
+import TransplanteTestimonials from '@/components/transplante/TransplanteTestimonials';
+import TransplanteGallery from '@/components/transplante/TransplanteGallery';
+import { TRANSPLANTE_CAPILAR as PAGE } from '@/config/transplante-capilar';
+
+const plansLoop = [...PAGE.plans.logos, ...PAGE.plans.logos];
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{PAGE.seo.title}</title>
+    <meta name="description" content={PAGE.seo.description} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={PAGE.siteUrl} />
+    <link rel="icon" type="image/png" href={PAGE.favicon} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:url" content={PAGE.siteUrl} />
+    <meta property="og:site_name" content={PAGE.name} />
+    <meta property="og:title" content={PAGE.seo.title} />
+    <meta property="og:description" content={PAGE.seo.description} />
+    <meta property="og:image" content={PAGE.ogImage} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={PAGE.seo.title} />
+    <meta name="twitter:description" content={PAGE.seo.description} />
+    <meta name="twitter:image" content={PAGE.ogImage} />
+
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'MedicalClinic',
+      name: PAGE.name,
+      description: PAGE.seo.description,
+      url: PAGE.siteUrl,
+      image: PAGE.ogImage,
+      medicalSpecialty: 'HairTransplant',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Belo Horizonte',
+        addressRegion: 'MG',
+        addressCountry: 'BR',
+      },
+      sameAs: ['https://lp.proplastica.com/transplante-capilar/'],
+    })} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href={PAGE.fontsUrl} rel="stylesheet" />
+    <style is:inline>
+      :root {{
+        --font-display: 'Poppins', sans-serif;
+        --font-body: 'Poppins', sans-serif;
+      }}
+    </style>
+  </head>
+  <body class="tc-page">
+    <main class="tc-main">
+      <section class="tc-hero">
+        <div
+          class="tc-hero-split"
+          style={`--tc-hero-desktop:url('${PAGE.hero.desktopBg}');--tc-hero-mobile:url('${PAGE.hero.mobileBg}');`}
+        >
+          <div class="tc-hero-left">
+            <img src={PAGE.hero.logo} alt={PAGE.name} class="tc-hero-logo reveal" />
+            <div class="tc-hero-copy">
+              <h1 class="tc-heading reveal">{PAGE.hero.title}</h1>
+              <p class="tc-hero-subtitle reveal">{PAGE.hero.subtitle}</p>
+              <div class="reveal">
+                <a href={PAGE.whatsappUrl} target="_blank" rel="noopener" class="tc-button tc-button--hero">
+                  <span class="tc-button-dot" aria-hidden="true"></span>
+                  <span>{PAGE.hero.ctaText}</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="tc-hero-right" role="img" aria-label={PAGE.name}></div>
+        </div>
+      </section>
+
+      <section class="tc-locationbar">
+        <div class="tc-shell">
+          <div class="tc-locationbar-shell reveal">
+            <div class="tc-locationbar-main">
+              <svg viewBox="0 0 384 512" aria-hidden="true"><path d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"/></svg>
+              <span>{PAGE.locationBar.location}</span>
+            </div>
+            <p class="tc-locationbar-credential">{PAGE.locationBar.credential}</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="tc-pains">
+        <div class="tc-shell tc-shell--wide">
+          <h2 class="tc-heading reveal">{PAGE.pains.heading}</h2>
+          <div class="tc-pains-grid reveal-list">
+            {PAGE.pains.items.map((item) => (
+              <article class="tc-pain-card" style={`background-image:url('${item.image}')`}>
+                <p>{item.text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+        <div class="tc-solution reveal">
+          <div class="tc-shell tc-shell--wide tc-solution-inner">
+            <h2 class="tc-heading">{PAGE.solution.heading}</h2>
+            <p>{PAGE.solution.body}</p>
+          </div>
+          <div class="tc-cta-wrap" style="padding-bottom:1rem">
+            <a href={PAGE.whatsappUrl} target="_blank" rel="noopener" class="tc-button">
+              Agendar consulta
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="tc-fue">
+        <div class="tc-shell tc-shell--wide tc-fue-shell">
+          <div class="tc-fue-heading reveal">
+            <h2 class="tc-heading">{PAGE.fue.heading}</h2>
+          </div>
+
+          <div class="tc-beforeafter reveal-list">
+            <article class="tc-beforeafter-card">
+              <img src={PAGE.fue.beforeSrc} alt="Antes do transplante capilar" loading="eager" />
+              <div class="tc-beforeafter-label">ANTES</div>
+            </article>
+            <article class="tc-beforeafter-card">
+              <img src={PAGE.fue.afterSrc} alt="Depois do transplante capilar" loading="lazy" />
+              <div class="tc-beforeafter-label">DEPOIS</div>
+            </article>
+          </div>
+
+          <div class="tc-rich-copy reveal">
+            {PAGE.fue.paragraphs.map((paragraph) => <p set:html={paragraph} />)}
+          </div>
+        </div>
+      </section>
+
+      <section class="tc-journey">
+        <div class="tc-shell tc-shell--wide">
+          <h2 class="tc-heading reveal">{PAGE.journey.heading}</h2>
+          <div class="tc-journey-grid reveal-list">
+            {PAGE.journey.steps.map((step, index) => (
+              <article class="tc-step-card">
+                <div class="tc-step-icon">
+                  {index === 0 && (
+                    <svg viewBox="0 0 576 512" aria-hidden="true"><path d="M532 386.2c27.5-27.1 44-61.1 44-98.2 0-80-76.5-146.1-176.2-157.9C368.3 72.5 294.3 32 208 32 93.1 32 0 103.6 0 192c0 37 16.5 71 44 98.2-15.3 30.7-37.3 54.5-37.7 54.9-6.3 6.7-8.1 16.5-4.4 25 3.6 8.5 12 14 21.2 14 53.5 0 96.7-20.2 125.2-38.8 9.2 2.1 18.7 3.7 28.4 4.9C208.1 407.6 281.8 448 368 448c20.8 0 40.8-2.4 59.8-6.8C456.3 459.7 499.4 480 553 480c9.2 0 17.5-5.5 21.2-14 3.6-8.5 1.9-18.3-4.4-25-.4-.3-22.5-24.1-37.8-54.8z"/></svg>
+                  )}
+                  {index === 1 && (
+                    <svg viewBox="0 0 576 512" aria-hidden="true"><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8z"/></svg>
+                  )}
+                  {index === 2 && (
+                    <svg viewBox="0 0 512 512" aria-hidden="true"><path d="M504 255.531c.253 136.64-111.18 248.372-247.82 248.468-59.015.042-113.223-20.53-155.822-54.911-11.077-8.94-11.905-25.541-1.839-35.607l11.267-11.267c8.609-8.609 22.353-9.551 31.891-1.984C173.062 425.135 212.781 440 256 440c101.705 0 184-82.311 184-184 0-101.705-82.311-184-184-184-48.814 0-93.149 18.969-126.068 49.932l50.754 50.754c10.08 10.08 2.941 27.314-11.313 27.314H24c-8.837 0-16-7.163-16-16V38.627c0-14.254 17.234-21.393 27.314-11.314l49.372 49.372C129.209 34.136 189.552 8 256 8c136.81 0 247.747 110.78 248 247.531z"/></svg>
+                  )}
+                </div>
+                <h3>{step.title}</h3>
+                <p>{step.description}</p>
+              </article>
+            ))}
+          </div>
+
+          <div class="tc-cta-wrap reveal">
+            <a href={PAGE.whatsappUrl} target="_blank" rel="noopener" class="tc-button">
+              Agendar consulta
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <TransplanteTestimonials
+        client:idle
+        eyebrow={PAGE.testimonials.eyebrow}
+        heading={PAGE.testimonials.heading}
+        items={PAGE.testimonials.items}
+        ctaHref={PAGE.whatsappUrl}
+        ctaText="Agendar consulta"
+      />
+
+      <TransplanteGallery
+        client:idle
+        heading={PAGE.hospital.heading}
+        paragraphs={PAGE.hospital.paragraphs}
+        images={PAGE.hospital.images}
+        bullets={PAGE.hospital.bullets}
+        ctaHref={PAGE.whatsappUrl}
+        ctaText="Agendar consulta"
+      />
+
+      <section class="tc-about">
+        <div class="tc-shell tc-shell--wide tc-about-layout">
+          <div class="tc-about-panel reveal">
+            <p class="tc-eyebrow">{PAGE.about.eyebrow}</p>
+            <h2 class="tc-heading">{PAGE.about.heading}</h2>
+            <div class="tc-rich-copy">
+              {PAGE.about.paragraphs.map((paragraph) => <p set:html={paragraph} />)}
+            </div>
+
+            <div class="tc-about-list">
+              {PAGE.about.bullets.map((bullet) => (
+                <div class="tc-about-item">
+                  <svg viewBox="0 0 512 512" aria-hidden="true"><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 48c110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200-110.532 0-200-89.451-200-200 0-110.532 89.451-200 200-200m140.204 130.267l-22.536-22.718c-4.667-4.705-12.265-4.736-16.97-.068L215.346 303.697l-59.792-60.277c-4.667-4.705-12.265-4.736-16.97-.069l-22.719 22.536c-4.705 4.667-4.736 12.265-.068 16.971l90.781 91.516c4.667 4.705 12.265 4.736 16.97.068l172.589-171.204c4.704-4.668 4.734-12.266.067-16.971z" fill="currentColor"/></svg>
+                  <p>{bullet}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="tc-about-media reveal">
+            <img src={PAGE.about.image} alt={PAGE.about.heading} loading="lazy" />
+            <a href={PAGE.whatsappUrl} target="_blank" rel="noopener" class="tc-button">
+              Agendar consulta
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="tc-plans">
+        <div class="tc-shell tc-shell--wide">
+          <div class="tc-plans-card reveal">
+            <h2 class="tc-heading">{PAGE.plans.heading}</h2>
+            <div class="tc-plans-marquee">
+              <div class="tc-plans-track">
+                {plansLoop.map((logo, index) => (
+                  <img src={logo} alt="" aria-hidden="true" loading="lazy" key={index} />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="tc-footer">
+        <p class="tc-footer-copy">{PAGE.footer.year} © {PAGE.footer.copyright}</p>
+        <a href={PAGE.footer.privacyHref} target="_blank" rel="noopener" class="tc-footer-link">
+          Política de privacidade
+        </a>
+      </footer>
+    </main>
+
+    <CookieBanner client:idle />
+
+    <script is:inline>
+      (function () {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('reveal--visible');
+            if (entry.target.classList.contains('reveal-list')) entry.target.classList.add('reveal-list--visible');
+            io.unobserve(entry.target);
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+        function init() {
+          document.querySelectorAll('.reveal,.reveal-list').forEach(function (element) {
+            io.observe(element);
+          });
+        }
+
+        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+        else init();
+      })();
+    </script>
+  </body>
+</html>

@@ -2,25 +2,27 @@
 import Layout from '@/layouts/Layout.astro';
 import HeroSection from '@/components/HeroSection.astro';
 import LocationBar from '@/components/LocationBar.astro';
-import DesiresSection from '@/components/DesiresSection.astro';
-import ServicesSection from '@/components/ServicesSection.astro';
 import TestimonialsCarousel from '@/components/TestimonialsCarousel';
-import GalleryCarousel from '@/components/GalleryCarousel';
-import ClinicaSection from '@/components/ClinicaSection';
-import DoctorsSection from '@/components/DoctorsSection.astro';
+import DesiresSection from '@/components/DesiresSection.astro';
+import VideoSection from '@/components/VideoSection.astro';
+import ProcessSection from '@/components/ProcessSection.astro';
+import TestimonialsSection from '@/components/TestimonialsSection.astro';
+import VisitSection from '@/components/VisitSection';
+import AboutSection from '@/components/AboutSection.astro';
 import Footer from '@/components/Footer.astro';
 ---
 
 <Layout>
-  <main>
+  <main class="lp-main">
     <HeroSection />
     <LocationBar />
-    <DesiresSection />
-    <ServicesSection />
     <TestimonialsCarousel client:idle />
-    <GalleryCarousel client:idle />
-    <ClinicaSection client:idle />
-    <DoctorsSection />
+    <DesiresSection />
+    <VideoSection />
+    <ProcessSection />
+    <TestimonialsSection />
+    <VisitSection client:idle />
+    <AboutSection />
     <Footer />
   </main>
 </Layout>

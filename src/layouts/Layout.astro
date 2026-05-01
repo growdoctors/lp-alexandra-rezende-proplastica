@@ -40,11 +40,11 @@ const fontBody    = (CLIENT as any).fonts?.body    ?? 'Montserrat';
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": CLIENT.schema.type,
-      "name": CLIENT.doctors[0].name,
+      "name": CLIENT.name,
       "description": CLIENT.seo.description,
       "url": CLIENT.siteUrl,
       "image": CLIENT.siteUrl + CLIENT.og.image,
-      "medicalSpecialty": "Anesthesiology",
+      "medicalSpecialty": "PlasticSurgery",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": CLIENT.schema.streetAddress,
@@ -59,7 +59,9 @@ const fontBody    = (CLIENT as any).fonts?.body    ?? 'Montserrat';
     <!-- Fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.cdnfonts.com" crossorigin />
     <link href={CLIENT.fontsUrl} rel="stylesheet" />
+    <link href="https://fonts.cdnfonts.com/css/luxury" rel="stylesheet" />
     <style is:inline set:html={`:root{--font-display:'${fontDisplay}',Georgia,serif;--font-body:'${fontBody}',sans-serif;}`}></style>
 
     <!-- Preconnect para origens externas -->
@@ -72,7 +74,7 @@ const fontBody    = (CLIENT as any).fonts?.body    ?? 'Montserrat';
     <link
       rel="preload"
       as="image"
-      href="/images/bg-hero-mobile.webp"
+      href="/images/referencia-proplastica/hero-mobile.png"
       media="(max-width: 768px)"
       fetchpriority="high"
     />
@@ -114,11 +116,6 @@ const fontBody    = (CLIENT as any).fonts?.body    ?? 'Montserrat';
           window.addEventListener('load', function () { setTimeout(loadGTM, 2000); }, { once: true });
         }
       })();
-    </script>
-
-    <!-- Scroll form to center on CTA click -->
-    <script is:inline>
-      document.addEventListener('click',function(e){var a=e.target.closest('a[href="#utmCaptureForm"]');if(!a)return;e.preventDefault();var els=document.querySelectorAll('[id="utmCaptureForm"]'),t;for(var i=0;i<els.length;i++){if(els[i].offsetParent!==null){t=els[i];break;}}if(t)t.scrollIntoView({behavior:'smooth',block:'center'});});
     </script>
 
     <!-- Scroll reveal -->

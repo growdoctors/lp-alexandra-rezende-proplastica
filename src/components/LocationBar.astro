@@ -2,35 +2,17 @@
 import { CLIENT } from '@/config/client';
 ---
 
-<div class="lp-location-bar">
-  <div class="lp-location-inner">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-      <circle cx="12" cy="10" r="3"/>
-    </svg>
-    <span>{CLIENT.location}</span>
+<section class="lp-location-bar">
+  <div class="lp-section-inner">
+    <div class="lp-location-shell">
+      <div class="lp-location-card">
+        <span class="lp-location-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.134 2 5 5.134 5 9c0 4.518 5.396 11.153 6.01 11.897a1.28 1.28 0 0 0 1.98 0C13.604 20.153 19 13.518 19 9c0-3.866-3.134-7-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>
+        </span>
+        <span class="lp-location-copy">{CLIENT.location}</span>
+      </div>
+      <div class="lp-location-divider" aria-hidden="true"></div>
+      <div class="lp-location-crm"><strong>CRM</strong>: 11209 | RQE: 8680 | CIRURGIA PLÁSTICA</div>
+    </div>
   </div>
-</div>
-
-<style>
-  .lp-location-bar {
-    width: 100%;
-    background: var(--lp-gold);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 24px;
-    height: 60px;
-  }
-  .lp-location-inner {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    color: #fff;
-    font-family: var(--font-body);
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-  }
-</style>
+</section>

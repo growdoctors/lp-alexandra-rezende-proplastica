@@ -6,34 +6,8 @@ const { footer } = CLIENT;
 
 <footer class="lp-footer">
   <div class="lp-footer-rule"></div>
-  <p class="lp-footer-copy">
-    {footer.year} © {footer.copyright}
-  </p>
+  <p class="lp-footer-copy">{footer.year} © {footer.copyright}</p>
+  <a href={footer.privacyHref} target="_blank" rel="noopener" class="lp-footer-link">
+    Política de privacidade
+  </a>
 </footer>
-
-<style>
-  .lp-footer {
-    background-color: var(--lp-dark);
-    width: 100%;
-    padding: 32px 24px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 14px;
-  }
-  .lp-footer-rule {
-    width: 40px;
-    height: 1px;
-    background: rgba(196,163,110,0.35);
-  }
-  .lp-footer-copy {
-    font-family: var(--font-body);
-    font-size: 11px;
-    font-weight: 400;
-    color: rgba(255,255,255,0.7);
-    text-align: center;
-    margin: 0;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-</style>

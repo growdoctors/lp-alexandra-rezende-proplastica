@@ -1,0 +1,316 @@
+---
+import CookieBanner from '@/components/CookieBanner';
+import { TRANSPLANTE_CAPILAR as TC } from '@/config/transplante-capilar';
+
+const planLogos = TC.plans.logos;
+const plansLoop = [...planLogos, ...planLogos];
+
+const cards = [
+  {
+    href: '/',
+    image: 'https://lp.proplastica.com/wp-content/uploads/2025/09/CAPA-LINKTREELP54.webp',
+    alt: 'Landing Page ProPlástica',
+  },
+  {
+    href: '/transplante-capilar/',
+    image: 'https://lp.proplastica.com/wp-content/uploads/2026/02/transplante-capilar.png.webp',
+    alt: 'Transplante Capilar',
+  },
+  {
+    href: 'https://proplastica.com/',
+    image: 'https://lp.proplastica.com/wp-content/uploads/2025/09/CAPA-LINKTREESITE-OFICIAL3131.webp',
+    alt: 'Site Oficial ProPlástica',
+    external: true,
+  },
+  {
+    href: TC.whatsappUrl,
+    image: 'https://lp.proplastica.com/wp-content/uploads/2025/09/WHATSAPP_Proplastica.png.webp',
+    alt: 'WhatsApp ProPlástica',
+    external: true,
+  },
+];
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hospital Dia ProPlástica — Links</title>
+    <meta name="robots" content="noindex" />
+    <link rel="icon" type="image/png" href={TC.favicon} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href={TC.fontsUrl} rel="stylesheet" />
+    <style is:inline>
+      :root {
+        --font-body: 'Poppins', sans-serif;
+        --lb-brown: #371c00;
+        --lb-gold: #c6a268;
+        --lb-green: #2cc04a;
+      }
+    </style>
+  </head>
+
+  <body class="lb-body">
+    <main class="lb-main">
+
+      <!-- Avatar + identidade -->
+      <header class="lb-header">
+        <div class="lb-avatar-wrap">
+          <img
+            src="https://lp.proplastica.com/wp-content/uploads/2024/04/Group-8.png.webp"
+            alt="Hospital Dia ProPlástica"
+            class="lb-avatar"
+            width="120"
+            height="120"
+            loading="eager"
+          />
+        </div>
+        <h1 class="lb-name">Hospital Dia ProPlástica</h1>
+        <p class="lb-desc">A ProPlástica é referência em cirurgia plástica, com foco em otoplastia fechada, procedimentos estéticos e cuidados personalizados em Belo Horizonte.</p>
+      </header>
+
+      <!-- Cards de link -->
+      <nav class="lb-cards" aria-label="Links">
+        {cards.map((card) => (
+          <a
+            href={card.href}
+            class="lb-card"
+            target={card.external ? '_blank' : '_self'}
+            rel={card.external ? 'noopener noreferrer' : undefined}
+          >
+            <img src={card.image} alt={card.alt} loading="lazy" />
+          </a>
+        ))}
+      </nav>
+
+      <!-- Planos de saúde -->
+      <section class="lb-plans">
+        <p class="lb-plans-heading">⚠️ Confira os planos de saúde que atendemos:</p>
+        <div class="lb-marquee-wrap">
+          <div class="lb-marquee-track">
+            {plansLoop.map((logo, i) => (
+              <img src={logo} alt="" aria-hidden="true" loading="lazy" key={i} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="lb-footer">
+      <img
+        src="https://lp.proplastica.com/wp-content/uploads/2024/04/Proplastica.svg"
+        alt="ProPlástica"
+        class="lb-footer-logo"
+        loading="lazy"
+      />
+      <p class="lb-footer-copy">{TC.footer.year} © {TC.footer.copyright}</p>
+      <a href={TC.footer.privacyHref} target="_blank" rel="noopener" class="lb-footer-link">Política de privacidade</a>
+    </footer>
+
+    <CookieBanner client:idle />
+
+    <script is:inline>
+      (function(){
+        var KEYS=['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','fbclid'];
+        var SKIP=['instagram.com','share.google','google.com/maps','waze.com','privacidade.growdoc'];
+        var pageQ=new URLSearchParams(window.location.search);
+        var captured=new URLSearchParams();
+        var hasUTM=false;
+        KEYS.forEach(function(k){
+          if(pageQ.has(k)){captured.set(k,pageQ.get(k));hasUTM=true;}
+        });
+        if(!hasUTM)return;
+        function build(href){
+          try{
+            var u=new URL(href);
+            KEYS.forEach(function(k){u.searchParams.delete(k);});
+            captured.forEach(function(v,k){u.searchParams.set(k,v);});
+            return u.toString();
+          }catch(e){return href;}
+        }
+        function skip(href){
+          if(!href||href[0]==='#')return true;
+          return SKIP.some(function(d){return href.indexOf(d)>-1;});
+        }
+        document.addEventListener('click',function(e){
+          var a=e.target.closest('a[href]');
+          if(!a)return;
+          var href=a.getAttribute('href')||'';
+          if(skip(href))return;
+          var novo=build(a.href);
+          if(novo===a.href)return;
+          e.preventDefault();
+          var target=a.getAttribute('target');
+          if(target==='_blank'){window.open(novo,'_blank');}
+          else{window.location.href=novo;}
+        },true);
+      })();
+    </script>
+  </body>
+</html>
+
+<style>
+  * { box-sizing: border-box; }
+
+  .lb-body {
+    margin: 0;
+    min-height: 100dvh;
+    font-family: var(--font-body), sans-serif;
+    background: linear-gradient(155deg, var(--lb-brown) 40%, #744310 100%);
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .lb-main {
+    flex: 1;
+    width: min(480px, 100%);
+    margin: 0 auto;
+    padding: 2.5rem 1rem 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.75rem;
+  }
+
+  /* Header */
+  .lb-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.75rem;
+  }
+
+  .lb-avatar-wrap {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2.5px solid rgba(198, 162, 104, 0.5);
+    box-shadow: 0 0 0 4px rgba(198, 162, 104, 0.15);
+    flex-shrink: 0;
+  }
+
+  .lb-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .lb-name {
+    margin: 0;
+    color: #fff;
+    font-size: 1.45rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .lb-desc {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.88rem;
+    line-height: 1.6;
+    max-width: 340px;
+  }
+
+  /* Cards */
+  .lb-cards {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .lb-card {
+    display: block;
+    border-radius: 18px;
+    overflow: hidden;
+    transition: transform 220ms ease, opacity 200ms ease;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+  }
+
+  .lb-card:hover {
+    transform: translateY(-2px);
+    opacity: 0.93;
+  }
+
+  .lb-card img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  /* Plans */
+  .lb-plans {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 22px;
+    padding: 1.25rem 1rem;
+  }
+
+  .lb-plans-heading {
+    margin: 0 0 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .lb-marquee-wrap {
+    overflow: hidden;
+  }
+
+  .lb-marquee-track {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    width: max-content;
+    animation: lb-marquee 24s linear infinite;
+  }
+
+  .lb-marquee-track img {
+    height: 32px;
+    width: auto;
+    object-fit: contain;
+    filter: brightness(0) invert(1) opacity(0.75);
+  }
+
+  @keyframes lb-marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  /* Footer */
+  .lb-footer {
+    padding: 1.5rem 1rem 2.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .lb-footer-logo {
+    width: 110px;
+    filter: brightness(0) invert(1) opacity(0.6);
+  }
+
+  .lb-footer-copy {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 0.78rem;
+  }
+
+  .lb-footer-link {
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 0.78rem;
+    text-decoration: underline;
+  }
+</style>
