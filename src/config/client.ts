@@ -21,7 +21,7 @@ export const CLIENT = {
     display: "Poppins",
     body: "Poppins",
   },
-  gtmId: "GTM-XXXXXXX",
+  gtmId: "GTM-PXGVF8ZW",
   webhookUrl: "",
   captureUrl: "",
   whatsappUrl:
