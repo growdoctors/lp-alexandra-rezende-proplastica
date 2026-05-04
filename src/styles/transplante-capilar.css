@@ -186,37 +186,50 @@
 }
 
 .tc-locationbar {
-  padding: 0 0 2.7rem;
+  padding: 0;
+  background: #371c00;
 }
 
 .tc-locationbar-shell {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem 2rem;
-  padding: 1.1rem 1.3rem;
-  border-radius: 24px;
-  background: rgba(255, 251, 244, 0.82);
-  border: 1px solid var(--tc-line);
-  box-shadow: var(--tc-shadow-soft);
+  justify-content: center;
+  gap: 0 2.5rem;
+  padding: 1.1rem 1.75rem;
+  border-radius: 0;
+  background: rgba(0, 0, 0, 0.25);
+  border: none;
+  border-top: 1px solid rgba(198, 162, 104, 0.15);
+  border-bottom: 1px solid rgba(198, 162, 104, 0.15);
 }
 
 .tc-locationbar-main {
   display: inline-flex;
   align-items: center;
-  gap: 0.9rem;
+  gap: 0.6rem;
   font-weight: 700;
+  font-size: 0.95rem;
+  color: #fff;
 }
 
 .tc-locationbar-main svg {
-  width: 18px;
-  height: 18px;
-  fill: #4f473f;
+  width: 16px;
+  height: 16px;
+  fill: var(--tc-gold);
+  flex-shrink: 0;
+}
+
+.tc-locationbar-divider {
+  width: 1px;
+  height: 28px;
+  background: rgba(198, 162, 104, 0.3);
+  flex-shrink: 0;
 }
 
 .tc-locationbar-credential {
-  color: var(--tc-muted);
-  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.85rem;
+  letter-spacing: 0.01em;
 }
 
 .tc-pains {
@@ -866,7 +879,13 @@
 
   .tc-locationbar-shell {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+  }
+
+  .tc-locationbar-divider {
+    display: none;
   }
 
   .tc-pains-grid,
