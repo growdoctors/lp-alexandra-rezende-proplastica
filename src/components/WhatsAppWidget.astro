@@ -46,9 +46,6 @@ const {
     </div>
   </div>
 
-  <!-- Tooltip -->
-  <div class="waw-tooltip" id="waw-tooltip">{agentSubtitle}</div>
-
   <!-- FAB button -->
   <button class="waw-btn" id="waw-btn" aria-label="Abrir chat WhatsApp" aria-expanded="false">
     <svg class="waw-icon waw-icon--open" viewBox="0 0 24 24" fill="white" aria-hidden="true">
@@ -196,25 +193,6 @@ const {
     flex-shrink: 0;
   }
 
-  /* Tooltip */
-  .waw-tooltip {
-    background: #fff;
-    color: #333;
-    font-size: 0.8rem;
-    line-height: 1.4;
-    padding: 0.55rem 0.85rem;
-    border-radius: 10px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.12);
-    max-width: 200px;
-    text-align: right;
-    pointer-events: none;
-    transition: opacity 200ms ease;
-  }
-
-  .waw-tooltip.is-hidden {
-    opacity: 0;
-  }
-
   /* FAB button */
   .waw-btn {
     width: 58px;
@@ -263,8 +241,7 @@ const {
   (function () {
     var btn = document.getElementById('waw-btn');
     var panel = document.getElementById('waw-panel');
-    var tooltip = document.getElementById('waw-tooltip');
-    if (!btn || !panel || !tooltip) return;
+    if (!btn || !panel) return;
 
     var open = false;
 
@@ -274,7 +251,6 @@ const {
       panel.classList.toggle('is-open', open);
       panel.setAttribute('aria-hidden', String(!open));
       btn.setAttribute('aria-expanded', String(open));
-      tooltip.classList.toggle('is-hidden', open);
     });
 
     document.addEventListener('click', function (e) {
@@ -284,7 +260,6 @@ const {
         panel.classList.remove('is-open');
         panel.setAttribute('aria-hidden', 'true');
         btn.setAttribute('aria-expanded', 'false');
-        tooltip.classList.remove('is-hidden');
       }
     });
   })();

@@ -444,7 +444,7 @@
 .tc-testimonial-card {
   flex: 0 0 calc(50% - 0.4rem);
   min-width: 0;
-  padding: 1.8rem 1.8rem 2rem;
+  padding: 1.2rem 1.5rem 1.4rem;
   border-radius: 16px;
   background: #fff;
   color: #2a2320;
@@ -452,13 +452,13 @@
 }
 
 .tc-testimonial-quote {
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
   color: var(--tc-gold);
-  font-size: 4.5rem;
+  font-size: 3.5rem;
   line-height: 0.72;
   font-weight: 700;
   letter-spacing: -0.08em;
-  height: 2.6rem;
+  height: 2rem;
   overflow: hidden;
 }
 
@@ -472,10 +472,10 @@
 }
 
 .tc-testimonial-card p {
-  margin: 0 0 1rem;
+  margin: 0 0 0.75rem;
   color: #4b433b;
-  font-size: 0.95rem;
-  line-height: 1.65;
+  font-size: 0.88rem;
+  line-height: 1.55;
 }
 
 .tc-testimonial-author {
