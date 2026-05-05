@@ -2,6 +2,7 @@
 import { CLIENT } from '@/config/client';
 import '@/styles/global.css';
 import CookieBanner from '@/components/CookieBanner';
+import WhatsAppWidget from '@/components/WhatsAppWidget.astro';
 
 const fontDisplay = (CLIENT as any).fonts?.display ?? 'Cormorant Garamond';
 const fontBody    = (CLIENT as any).fonts?.body    ?? 'Montserrat';
@@ -94,6 +95,8 @@ const fontBody    = (CLIENT as any).fonts?.body    ?? 'Montserrat';
 
     <!-- Banner LGPD -->
     <CookieBanner client:idle />
+
+    <WhatsAppWidget />
 
     <!-- GTM com delay de 2s após load -->
     <script is:inline define:vars={{ gtmId: CLIENT.gtmId }}>

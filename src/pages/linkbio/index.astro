@@ -1,5 +1,6 @@
 ---
 import CookieBanner from '@/components/CookieBanner';
+import WhatsAppWidget from '@/components/WhatsAppWidget.astro';
 import { TRANSPLANTE_CAPILAR as TC } from '@/config/transplante-capilar';
 
 const planLogos = TC.plans.logos;
@@ -119,6 +120,7 @@ const cards = [
     </footer>
 
     <CookieBanner client:idle />
+    <WhatsAppWidget />
 
     <script is:inline>
       (function(){

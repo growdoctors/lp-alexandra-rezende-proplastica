@@ -1,6 +1,7 @@
 ---
 import '@/styles/transplante-capilar.css';
 import CookieBanner from '@/components/CookieBanner';
+import WhatsAppWidget from '@/components/WhatsAppWidget.astro';
 import TransplanteTestimonials from '@/components/transplante/TransplanteTestimonials';
 import TransplanteGallery from '@/components/transplante/TransplanteGallery';
 import { TRANSPLANTE_CAPILAR as PAGE } from '@/config/transplante-capilar';
@@ -252,6 +253,7 @@ const plansLoop = [...PAGE.plans.logos, ...PAGE.plans.logos];
     </main>
 
     <CookieBanner client:idle />
+    <WhatsAppWidget />
 
     <script is:inline>
       (function () {
