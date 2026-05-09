@@ -8,7 +8,7 @@ export const TRANSPLANTE_CAPILAR = {
     description:
       'Acabe com a calvície com o transplante capilar pela técnica FUE. Resultados naturais e permanentes em Belo Horizonte com equipe especializada.',
   },
-  ogImage: 'https://lp.proplastica.com/wp-content/uploads/2026/01/antes2.png',
+  ogImage: '/images/tc/antes.png',
   whatsappUrl:
     'https://wa.me/5531971666098?text=Ol%C3%A1,%20gostaria%20de%20falar%20com%20a%20Mabi%20da%20ProPl%C3%A1stica',
   footer: {
@@ -17,9 +17,9 @@ export const TRANSPLANTE_CAPILAR = {
     privacyHref: 'https://privacidade.growdoc.com.br/',
   },
   hero: {
-    logo: 'https://lp.proplastica.com/wp-content/uploads/2025/12/Ativo-12112-1.png',
-    desktopBg: 'https://lp.proplastica.com/wp-content/uploads/2025/12/BG-Desktop-Proplastica3.png',
-    mobileBg: 'https://lp.proplastica.com/wp-content/uploads/2025/12/BG-Mob-Proplastica3.png',
+    logo: '/images/tc/logo-tc.png',
+    desktopBg: '/images/tc/hero-desktop.png',
+    mobileBg: '/images/tc/hero-mobile.png',
     title:
       'Recupere sua autoestima e conquiste o cabelo de volta com o transplante capilar realizado no maior centro de cirurgia plástica de Minas Gerais',
     subtitle:
@@ -33,10 +33,10 @@ export const TRANSPLANTE_CAPILAR = {
   pains: {
     heading: 'Se você sofre com:',
     items: [
-      { text: 'Frustração por ter gastado rios de dinheiro com remédios e tratamentos ineficazes', image: 'https://lp.proplastica.com/wp-content/uploads/2025/12/Whisk_6f7fc3dcfdbc6ef856a482a3490ea4c3dr.jpeg.webp' },
-      { text: 'Calvície avançada que compromete sua aparência e impacta diretamente sua autoestima', image: 'https://lp.proplastica.com/wp-content/uploads/2025/12/Calvice.jpeg.webp' },
-      { text: 'Falhas na barba ou sobrancelhas que incomodam e afetam sua imagem', image: 'https://lp.proplastica.com/wp-content/uploads/2025/12/falhas-na-sobrancelha-e-barba.jpeg.webp' },
-      { text: 'Cicatrizes ou áreas com perda de pelos após queimaduras que te lembram todos os dias do problema', image: 'https://lp.proplastica.com/wp-content/uploads/2025/12/Whisk_989707a90c9da6b90eb4b34cd9c5f764dr.jpeg.webp' },
+      { text: 'Frustração por ter gastado rios de dinheiro com remédios e tratamentos ineficazes', image: '/images/tc/pain-1.webp' },
+      { text: 'Calvície avançada que compromete sua aparência e impacta diretamente sua autoestima', image: '/images/tc/pain-calvice.webp' },
+      { text: 'Falhas na barba ou sobrancelhas que incomodam e afetam sua imagem', image: '/images/tc/pain-3.webp' },
+      { text: 'Cicatrizes ou áreas com perda de pelos após queimaduras que te lembram todos os dias do problema', image: '/images/tc/pain-2.webp' },
     ],
   },
   solution: {
@@ -46,8 +46,8 @@ export const TRANSPLANTE_CAPILAR = {
   },
   fue: {
     heading: 'Conheça a técnica F.U.E',
-    beforeSrc: 'https://lp.proplastica.com/wp-content/uploads/2026/01/antes2.png',
-    afterSrc: 'https://lp.proplastica.com/wp-content/uploads/2026/01/depois-1.png',
+    beforeSrc: '/images/tc/antes.png',
+    afterSrc: '/images/tc/depois.png',
     paragraphs: [
       'A técnica FUE (Extração de Unidades Foliculares) é hoje o que há de mais moderno no transplante capilar.',
       'É um procedimento <strong>minimamente invasivo</strong>, feito <strong>fio a fio</strong>, que permite resultados extremamente naturais, sem deixar cicatriz linear e com um tempo de <strong>recuperação muito mais rápido</strong>.',
@@ -113,12 +113,12 @@ export const TRANSPLANTE_CAPILAR = {
       'Nossa equipe é formada por médicos competentes, liderada pelo Dr. Alexandre Marcondes e pela Dra. Alexandra Rezende.',
     ],
     images: [
-      'https://lp.proplastica.com/wp-content/uploads/elementor/thumbs/DSC_4868-Editar-qv1a39j16k0l5wc8y1qhveclh8oi3a73d584cjtqjk.jpg',
-      'https://lp.proplastica.com/wp-content/uploads/elementor/thumbs/DSC_9462-qv1a3lqxnehbctuhyp0n9t9l7909vcjlqtpfl5bmao.jpg',
-      'https://lp.proplastica.com/wp-content/uploads/elementor/thumbs/sala-de-espera-proplastica-qv1a41q6vl36u77addxay78fastii7b1h0soqunxcw.jpg',
-      'https://lp.proplastica.com/wp-content/uploads/elementor/thumbs/DSC_4870-Editar-qv1a3f62bk8b3k421469acxd1jwpdgthdx5187ldi8.jpg',
-      'https://lp.proplastica.com/wp-content/uploads/elementor/thumbs/DSC_4871-Editar-qv1a3v5bjqu6kxguft2wyqw753py0bkx448adwxokg.jpg',
-      'https://lp.proplastica.com/wp-content/uploads/elementor/thumbs/DSC_9535-qv1a3piaeqmgn9p1cqn5jsbfkshqq4yj3cbdi961ls.jpg',
+      '/images/tc/DSC_4868.jpg',
+      '/images/tc/DSC_9462.jpg',
+      '/images/tc/sala-espera-thumb.jpg',
+      '/images/tc/DSC_4870.jpg',
+      '/images/tc/DSC_4871.jpg',
+      '/images/tc/DSC_9535.jpg',
     ],
     bullets: [
       'Ambientes modernos e confortáveis',
@@ -143,23 +143,23 @@ export const TRANSPLANTE_CAPILAR = {
       'Salas de procedimentos altamente equipadas;',
       'Equipe multiprofissional completa.',
     ],
-    image: 'https://lp.proplastica.com/wp-content/uploads/2024/04/sala-de-espera-proplastica-1024x683.jpg',
+    image: '/images/tc/sala-espera.jpg',
   },
   plans: {
     heading: 'Confira os planos de saúde que atendemos:',
     logos: [
-      'https://lp.proplastica.com/wp-content/uploads/elementor/thumbs/image-1-qv1a5id2eh5maz8yo6ci7elatz8odli4fuun5wvxmo.png',
-      'https://lp.proplastica.com/wp-content/uploads/elementor/thumbs/image-2-qv1a5jawlb6wml7lior4rwcrfd41lalurzi4n6ujgg.png',
-      'https://lp.proplastica.com/wp-content/uploads/elementor/thumbs/image-3-qv1a5k8qs586y768d75rce480qzeszpl445m4gt5a8.png',
-      'https://lp.proplastica.com/wp-content/uploads/elementor/thumbs/image-4-qv1a5l6kyz9h9t4v7pkdwvvom4us0otbg8t3lqrr40.png',
-      'https://lp.proplastica.com/wp-content/uploads/elementor/thumbs/image-5-qv1a5m4f5tarlf3i27z0hdn57iq58dx1sdgl30qcxs.png',
-      'https://lp.proplastica.com/wp-content/uploads/elementor/thumbs/image-6-qv1a5n29cnc1x124wqdn1velswlig30s4i42kaoyrk.png',
-      'https://lp.proplastica.com/wp-content/uploads/elementor/thumbs/image-7-qv1a5o03jhdc8n0rr8s9md62eagvns4igmrk1knklc.png',
-      'https://lp.proplastica.com/wp-content/uploads/elementor/thumbs/image-8-qv1a5pvrx5fwvuy1g9lircozl27m36bz4w2j04ks8w.png',
-      'https://lp.proplastica.com/wp-content/uploads/elementor/thumbs/image-9-qv1a5qtm3zh77gwoas05bugg6g2zavfph0q0heje2o.png',
-      'https://lp.proplastica.com/wp-content/uploads/elementor/thumbs/image-10-qv1a5rrgatihj2vb5aerwc7wrtycikjft5dhyohzwg.png',
-      'https://lp.proplastica.com/wp-content/uploads/elementor/thumbs/image-11-qv1a5tn4ohl26askub811bqtylp2xyqwheogx8f7k0.png',
-      'https://lp.proplastica.com/wp-content/uploads/elementor/thumbs/image-12-qv1a5ukyvbmchwr7otmnltiajzkg5numtjbyeidtds.png',
+      '/images/tc/hospital-1.png',
+      '/images/tc/hospital-2.png',
+      '/images/tc/hospital-3.png',
+      '/images/tc/hospital-4.png',
+      '/images/tc/hospital-5.png',
+      '/images/tc/hospital-6.png',
+      '/images/tc/hospital-7.png',
+      '/images/tc/hospital-8.png',
+      '/images/tc/hospital-9.png',
+      '/images/tc/hospital-10.png',
+      '/images/tc/hospital-11.png',
+      '/images/tc/hospital-12.png',
     ],
   },
 } as const;
