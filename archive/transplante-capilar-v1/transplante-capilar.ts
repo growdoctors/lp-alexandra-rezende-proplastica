@@ -21,9 +21,9 @@ export const TRANSPLANTE_CAPILAR = {
     desktopBg: '/images/tc/hero-desktop.png',
     mobileBg: '/images/tc/hero-mobile.png',
     title:
-      'Sua calvície está avançando? Recupere suas entradas e a densidade capilar com a técnica FUE no Hospital ProPlástica.',
+      'Recupere sua autoestima e conquiste o cabelo de volta com o transplante capilar realizado no maior centro de cirurgia plástica de Minas Gerais',
     subtitle:
-      'Não espere o último fio cair. Entenda se você ainda possui área doadora para reverter a calvície com resultados naturais e sem cicatrizes lineares.',
+      'Se a queda de cabelo afetou sua imagem e sua confiança, o transplante capilar com a técnica F.U.E no Hospital Dia ProPlástica é a solução segura e sem cicatriz linear que você precisa.',
     ctaText: 'Agendar consulta',
   },
   locationBar: {
@@ -31,12 +31,12 @@ export const TRANSPLANTE_CAPILAR = {
     credential: 'CRM: 11209 | RQE: 8680 | Cirurgia Plástica',
   },
   pains: {
-    heading: 'Você se identifica com esses sinais?',
+    heading: 'Se você sofre com:',
     items: [
-      { text: 'As entradas estão cada vez mais fundas e difíceis de disfarçar.', image: '/images/tc/pain-calvice.webp' },
-      { text: 'O topo da cabeça (coroa) já aparece sob a luz forte ou fotos.', image: '/images/tc/pain-1.webp' },
-      { text: 'Você evita certos cortes de cabelo ou usa boné para esconder a falha.', image: '/images/tc/pain-2.webp' },
-      { text: 'Tratamentos paliativos e loções já não fazem mais efeito.', image: '/images/tc/pain-3.webp' },
+      { text: 'Frustração por ter gastado rios de dinheiro com remédios e tratamentos ineficazes', image: '/images/tc/pain-1.webp' },
+      { text: 'Calvície avançada que compromete sua aparência e impacta diretamente sua autoestima', image: '/images/tc/pain-calvice.webp' },
+      { text: 'Falhas na barba ou sobrancelhas que incomodam e afetam sua imagem', image: '/images/tc/pain-3.webp' },
+      { text: 'Cicatrizes ou áreas com perda de pelos após queimaduras que te lembram todos os dias do problema', image: '/images/tc/pain-2.webp' },
     ],
   },
   solution: {
@@ -49,17 +49,11 @@ export const TRANSPLANTE_CAPILAR = {
     beforeSrc: '/images/tc/antes.png',
     afterSrc: '/images/tc/depois.png',
     paragraphs: [
-      'Transplante Capilar de Alta Performance: Sem cortes e sem cicatriz linear. Voltamos a implantar seus próprios fios onde a calvície venceu, com uma recuperação rápida para você voltar à rotina em poucos dias.',
+      'A técnica FUE (Extração de Unidades Foliculares) é hoje o que há de mais moderno no transplante capilar.',
       'É um procedimento <strong>minimamente invasivo</strong>, feito <strong>fio a fio</strong>, que permite resultados extremamente naturais, sem deixar cicatriz linear e com um tempo de <strong>recuperação muito mais rápido</strong>.',
       'Nela, as unidades foliculares, que contêm de 1 a 4 fios, são extraídas individualmente da parte posterior da cabeça, onde os fios são mais resistentes à queda, com instrumentos de alta precisão.',
       'Em seguida, os folículos são implantados <strong>um a um</strong> nas áreas calvas ou com baixa densidade, respeitando a <strong>angulação, direção e densidade natural dos fios</strong> para proporcionar um visual harmônico e discreto.',
       'Tudo isso é feito com <strong>anestesia local e sedação intravenosa</strong>, para que você não sofra com desconforto no momento da realização do procedimento.',
-    ],
-  },
-  results: {
-    heading: 'RESULTADOS DE PACIENTES QUE RECUPERARAM A SUA CONFIANÇA',
-    items: [
-      { beforeSrc: '/images/tc/antes.png', afterSrc: '/images/tc/depois.png' },
     ],
   },
   journey: {
@@ -145,7 +139,7 @@ export const TRANSPLANTE_CAPILAR = {
     bullets: [
       'Médicos membros da Sociedade Brasileira de Cirurgia Plástica (SBCP);',
       'Alta recebida no mesmo dia;',
-      'Apartamentos e leitos de recuperação intensiva.',
+      'Suítes e leito semi-intensivo.',
       'Salas de procedimentos altamente equipadas;',
       'Equipe multiprofissional completa.',
     ],

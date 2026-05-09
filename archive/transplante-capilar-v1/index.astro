@@ -151,31 +151,6 @@ const plansLoop = [...PAGE.plans.logos, ...PAGE.plans.logos];
         </div>
       </section>
 
-      <section class="tc-results">
-        <div class="tc-shell tc-shell--wide">
-          <h2 class="tc-heading reveal">{PAGE.results.heading}</h2>
-          <div class="tc-beforeafter reveal-list">
-            {PAGE.results.items.map((item) => (
-              <>
-                <article class="tc-beforeafter-card">
-                  <img src={item.beforeSrc} alt="Antes do transplante capilar" loading="lazy" />
-                  <div class="tc-beforeafter-label">ANTES</div>
-                </article>
-                <article class="tc-beforeafter-card">
-                  <img src={item.afterSrc} alt="Depois do transplante capilar" loading="lazy" />
-                  <div class="tc-beforeafter-label">DEPOIS</div>
-                </article>
-              </>
-            ))}
-          </div>
-          <div class="tc-cta-wrap reveal">
-            <a href={PAGE.whatsappUrl} target="_blank" rel="noopener" class="tc-button">
-              Agendar consulta
-            </a>
-          </div>
-        </div>
-      </section>
-
       <section class="tc-journey">
         <div class="tc-shell tc-shell--wide">
           <h2 class="tc-heading reveal">{PAGE.journey.heading}</h2>
